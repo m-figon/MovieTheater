@@ -1,5 +1,11 @@
 <template>
   <div class="repertoire">
+    <div class="city-div">
+      <select v-model="city">
+        <option value="City">Choose city</option>
+        <option v-for="city in cities" v-bind:value="city">{{city}}</option>
+      </select>
+    </div>
     <div class="films">
       <div v-for="item in films" class="film">
         <div class="left">
@@ -10,7 +16,7 @@
             <div class="line">
               <h2>{{item.title}}</h2>
             </div>
-            <div class="line">
+            <div class="line" id="gray">
               <h1>{{item.type}}</h1>
               <div class="separator"></div>
               <h1>Above {{item.age}}</h1>
@@ -21,6 +27,13 @@
           <div class="big-line">
             <p>{{item.description}}</p>
           </div>
+          <div class="big-line" id="top" v-if="city!='City'">
+            <div v-for="cities in item.cities">
+              <div class="line"  v-if="cities.name===city">
+                <div v-for="hour in cities.hours"><p id="hour">{{hour}}</p></div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="right">
           <div class="big-line">
@@ -29,7 +42,7 @@
               <h1 id="pink">{{item.rating}}</h1>
             </div>
             <div class="line" id="centered">
-              <h1>Rating</h1>
+              <h1 id="gray">Rating</h1>
             </div>
           </div>
         </div>
@@ -43,6 +56,8 @@ export default {
   data() {
     return {
       films: [],
+      city: "City",
+      cities: [],
     };
   },
   created() {
@@ -50,6 +65,21 @@ export default {
       .then((response) => response.json())
       .then((data) => {
         this.films = data.slice();
+        for (let item of this.films) {
+          for (let elem of item.cities) {
+            console.log(elem.name);
+            let existing = false;
+            for (let city of this.cities) {
+              if (elem.name === city) {
+                existing = true;
+              }
+            }
+            if (!existing) {
+              this.cities.push(elem.name);
+            }
+          }
+        }
+        console.log(this.cities);
       });
   },
 };
@@ -61,6 +91,27 @@ export default {
   width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.city-div {
+  width: 60%;
+  height: 4rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.city-div select {
+  background: rgba(0, 0, 0, 0);
+  border: 0;
+  border-bottom: 1px solid white;
+  width: 10rem;
+  height: 2rem;
+  font-size: 1.2rem;
+  color: #c8006d;
+}
+#hour{
+  margin:0 0.5rem;
 }
 .repertoire h1,
 .repertoire h2 {
@@ -74,7 +125,7 @@ export default {
 .film {
   height: 20rem;
   width: 100%;
-  border: 1px solid white;
+  border-bottom: 1px solid white;
   display: flex;
 }
 .film h1 {
@@ -82,12 +133,15 @@ export default {
 }
 .film h2 {
   font-size: 1.5rem;
+  text-transform: uppercase;
+  margin-top: 2rem;
 }
 .separator {
   background: white;
   width: 1px;
   height: 1rem;
   margin: 0 0.5rem;
+  color: gray;
 }
 .left {
   width: 20%;
@@ -111,6 +165,9 @@ export default {
   flex-direction: column;
   width: 100%;
 }
+#top{
+  margin-top: 3rem;
+}
 .line {
   height: 50%;
   display: flex;
@@ -128,11 +185,17 @@ export default {
 .left img {
   width: 90%;
   height: 80%;
+  -webkit-box-shadow: 0px 0px 29px -23px rgba(255, 255, 255, 1);
+  -moz-box-shadow: 0px 0px 29px -23px rgba(255, 255, 255, 1);
+  box-shadow: 0px 0px 29px -23px rgba(255, 255, 255, 1);
 }
 #pink {
   color: #c8006d;
 }
 #centered {
   justify-content: center;
+}
+#gray {
+  color: gray;
 }
 </style>

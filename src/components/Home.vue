@@ -77,6 +77,7 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-top: 2rem;
 }
 .home button {
   position: relative;
