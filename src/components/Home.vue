@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <vue-image-slider
-      :images="imageArray"
+      :images="posters"
       ref="slider"
       :intervalVal="3000"
       v-bind:height="height"
@@ -19,12 +19,8 @@ export default {
     return {
       width: 0,
       height: 0,
-      imageArray: [
-        "https://www.joblo.com/assets/images/joblo/posters/2020/01/onward-new-poster.jpg",
-        "https://www.joblo.com/assets/images/oldsite/posters/images/full/bohemian_rhapsody_poster-xl.jpg",
-        "https://www.joblo.com/assets/images/joblo/posters/2019/11/SonicPoster.jpg",
-        "https://www.joblo.com/assets/images/joblo/posters/2019/09/knives-out-final-poster.jpg",
-      ],
+      films: [],
+      posters: []
     };
   },
   components: {
@@ -43,6 +39,15 @@ export default {
         this.height = window.innerHeight/2;
       }
     }, 200);
+    fetch("https://rocky-citadel-32862.herokuapp.com/MovieTheater/films")
+        .then(response => response.json())
+        .then(data => {
+          this.films = data.slice();
+          console.log(this.films);
+          for(let item of this.films){
+            this.posters.push(item.img);
+          }
+        });
   },
   methods: {
     clicking() {
