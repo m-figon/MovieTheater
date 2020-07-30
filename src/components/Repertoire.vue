@@ -98,6 +98,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+a{
+  text-decoration: none;
+  color: #c8006d;
+}
 .repertoire {
   width: 100%;
   display: flex;
