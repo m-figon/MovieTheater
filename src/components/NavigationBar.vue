@@ -43,6 +43,7 @@ export default {
   display: flex;
   justify-content: center;
   background: #000000;
+  border-bottom: 1px solid gray;
 }
 .nav-bar-display {
   width: 60%;
