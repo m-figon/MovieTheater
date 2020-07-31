@@ -14,7 +14,8 @@
     "vue-easy-slider": "^5.3.2",
     "vue-image-slider": "^1.0.2",
     "vue-router": "^3.0.1",
-    "vue-youtube": "^1.4.0"
+    "vue-youtube": "^1.4.0",
+    "vuex": "^3.5.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

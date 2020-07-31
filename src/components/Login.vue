@@ -7,26 +7,40 @@
           v-on:focus="focusFunc('Account Name',$event,false)"
           v-on:blur="blurFunc('Account Name',$event,false)"
         />
+        <p v-bind:style="[accountId ? {'display':'block'} : {'display':'none'}]">Invalid user data</p>
         <input
           v-model="password"
           v-bind:type="type"
           v-on:focus="focusFunc('Password',$event,true)"
           v-on:blur="blurFunc('Password',$event,true)"
         />
-        <button>Login</button>
+        <button v-on:click="login()">Login</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import store from "../store";
+
 export default {
+  store,
   data() {
     return {
       account: "Account Name",
       password: "Password",
-      type: "text"
+      type: "text",
+      users: [],
+      accountId: false,
     };
+  },
+  created() {
+    fetch("https://rocky-citadel-32862.herokuapp.com/MovieTheater/users")
+      .then((response) => response.json())
+      .then((data) => {
+        this.users = data.slice();
+        console.log(this.users);
+      });
   },
   methods: {
     focusFunc(text, event, condition) {
@@ -53,6 +67,24 @@ export default {
         }
       }
     },
+    login() {
+      let correct = false;
+      for (let item of this.users) {
+        if (item.account === this.account && item.password === this.password) {
+          this.$store.commit("changeName", this.account);
+          this.accountId = false;
+          this.account = "Account Name";
+          this.type = "text";
+          this.password = "Password";
+          alert("login completed");
+          correct = true;
+        }
+      }
+      if (!correct) {
+        this.accountId = true;
+        alert("there isnt such user");
+      }
+    },
   },
 };
 </script>
@@ -69,7 +101,7 @@ export default {
 .login-form {
   border-radius: 30px;
   width: 30rem;
-  height: 13rem;
+  height: auto;
   background: url("../assets/bg.jpg");
   background-size: 100% 100%;
   display: flex;
@@ -81,6 +113,10 @@ export default {
   height: 80%;
   display: flex;
   flex-direction: column;
+}
+.login-form-content p {
+  margin: 0;
+  font-size: 1rem;
 }
 .login-form-content input {
   background: rgba(0, 0, 0, 0);

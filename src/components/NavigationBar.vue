@@ -14,23 +14,42 @@
         <router-link to="/cinemas">
           <h1>Our Cinemas</h1>
         </router-link>
-
-        <router-link to="/login">
-          <h1>Sign in</h1>
-        </router-link>
-
+        <div v-if="logedAc===''">
+          <router-link to="/login">
+            <h1>Sign in</h1>
+          </router-link>
+        </div>
+        <div v-else>
+          <h1 v-on:click="signOut()">Sign out</h1>
+        </div>
         <router-link to="/register">
           <h1>Sign up</h1>
         </router-link>
+        <h1>{{logedAc}}</h1>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import store from "../store/index";
+
 export default {
+  store,
   data() {
-    return {};
+    return {
+      logedAc: "",
+    };
+  },
+  created() {
+    setInterval(() => {
+      this.logedAc = this.$store.state.user.logedUser;
+    }, 500);
+  },
+  methods: {
+    signOut() {
+      this.$store.commit("changeName", "");
+    },
   },
 };
 </script>
@@ -71,5 +90,8 @@ export default {
   font-size: 1.2rem;
   margin: 0 1rem;
   color: white;
+}
+.right h1:hover{
+  cursor: pointer;
 }
 </style>

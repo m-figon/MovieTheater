@@ -11,7 +11,7 @@ export default {
   name: "App",
   components: {
     "nav-bar": NavigationBar,
-  },
+  }
 };
 </script>
 
@@ -20,7 +20,7 @@ body {
   margin: 0;
   background: #000000;
 }
-a{
+a {
   text-decoration: none;
 }
 #app {
