@@ -19,8 +19,8 @@
           <div class="hour-line" v-if="city!='City'">
             <div v-for="cities in film.cities">
               <div class="line" v-if="cities.name===city">
-                <div v-for="hour in cities.hours">
-                  <div v-on:click="chooseHour(hour.seats)" class="hour">
+                <div v-for="(hour,key) in cities.hours">
+                  <div v-on:click="chooseHour($event,hour.seats,key)" class="hour">
                     <h1>{{hour.hour}}</h1>
                   </div>
                 </div>
@@ -33,14 +33,18 @@
                 <div v-if="seat==='0'">
                   <button v-on:click="chooseGreen(index,key)" id="green"></button>
                 </div>
+                <div v-if="seat==='-'">
+                  <button v-on:click="chooseWhite(index,key)" id="white"></button>
+                </div>
                 <div v-if="seat==='1'">
                   <button v-on:click="chooseRed()" id="red"></button>
                 </div>
-                <div v-if="seat!=='0' && seat!=='1'">
+                <div v-if="seat!=='0' && seat!=='1' && seat!=='-'">
                   <p>{{seat}}</p>
                 </div>
               </div>
             </div>
+            <button v-on:click="order()">Order</button>
           </div>
         </div>
       </div>
@@ -56,6 +60,9 @@ export default {
       cities: [],
       city: "City",
       rows: null,
+      hourIndex: null,
+      filmId: null,
+      previousTarget: null,
     };
   },
   created() {
@@ -71,6 +78,7 @@ export default {
         console.log(this.filmName);
         for (let item of films) {
           if (item.title === this.filmName) {
+            this.filmId = item.id;
             this.film = item;
           }
         }
@@ -94,22 +102,84 @@ export default {
       });
   },
   methods: {
-    chooseHour(str) {
+    chooseHour(e, str, i) {
+      console.log(e.target);
+      if (this.previousTarget) {
+        this.previousTarget.style.backgroundColor = "black";
+      }
+      e.target.style.backgroundColor = "#c8006d";
+      this.previousTarget = e.target;
+      this.hourIndex = i;
+      console.log(this.hourIndex);
       this.rows = str.split(",");
       console.log(this.rows);
     },
-    setCharAt(str,index,chr) {
-    if(index > str.length-1) return str;
-    return str.substr(0,index) + chr + str.substr(index+1);
+    setCharAt(str, index, chr) {
+      if (index > str.length - 1) return str;
+      return str.substr(0, index) + chr + str.substr(index + 1);
     },
-    chooseGreen(id1,id2){
-        let tmp=this.rows.slice();
-        tmp[id1]=this.setCharAt(tmp[id1],id2,'1');
-        this.rows=tmp.slice();
-        console.log(this.rows);
+    chooseGreen(id1, id2) {
+      let tmp = this.rows.slice();
+      tmp[id1] = this.setCharAt(tmp[id1], id2, "-");
+      this.rows = tmp.slice();
+      console.log(this.rows);
     },
-    chooseRed(){
-        alert('this place is unavailable');
+    chooseWhite(id1, id2) {
+      let tmp = this.rows.slice();
+      tmp[id1] = this.setCharAt(tmp[id1], id2, "0");
+      this.rows = tmp.slice();
+      console.log(this.rows);
+    },
+    chooseRed() {
+      alert("this place is unavailable");
+    },
+    order() {
+      let tmp = "";
+      for (let item of this.rows) {
+        tmp += item;
+        tmp += ",";
+      }
+      tmp = tmp.split("-").join("1");
+      let cityIndex = null;
+      for (let i = 0; i < this.cities.length; i++) {
+        if (this.cities[i] === this.city) {
+          cityIndex = i;
+        }
+      }
+      this.film.cities[cityIndex].hours[this.hourIndex].seats = tmp;
+      console.log(this.film);
+      console.log(this.film.cities);
+      fetch(
+        "https://rocky-citadel-32862.herokuapp.com/MovieTheater/films/" +
+          this.filmId,
+        {
+          method: "PUT",
+          body: JSON.stringify({
+            title: this.film.title,
+            duration: this.film.duration,
+            img: this.film.img,
+            trailer: this.film.trailer,
+            description: this.film.description,
+            age: this.film.age,
+            rating: this.film.rating,
+            cities: this.film.cities,
+          }),
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+        }
+      )
+      /*
+      .then(()=>{
+        //alert("seats ordered");
+        
+        let url = this.$route.path;
+        url = url.substr(1, url.length - 5);
+        console.log(url);
+        this.$router.push('/'+url);
+        
+      })
+      */
     },
   },
 };
@@ -127,6 +197,19 @@ export default {
   flex-direction: column;
   background-size: 100% 100%;
 }
+.seats button {
+  background: #c8006d;
+  border-radius: 10px;
+  border: 1px solid gray;
+  width: 4rem;
+  height: 2rem;
+  font-size: 1.2rem;
+  color: white;
+  margin: 1rem 0;
+}
+.seats button:hover {
+  cursor: pointer;
+}
 .row button {
   width: 3rem;
   height: 3rem;
@@ -140,6 +223,12 @@ export default {
 }
 #green:hover {
   background-color: rgb(1, 163, 1);
+}
+#white {
+  background-color: white;
+}
+#white:hover {
+  background-color: rgb(236, 236, 236);
 }
 #red {
   background-color: red;
@@ -249,6 +338,13 @@ export default {
   justify-content: center;
   align-items: center;
   border: 1px solid #c8006d;
+}
+.hour h1 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .hour:hover {
   background: #c8006d;

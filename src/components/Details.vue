@@ -65,7 +65,7 @@ export default {
         films = data.slice();
         this.filmName = this.$route.path;
         this.filmName = this.filmName.substr(1);
-        this.filmName = this.filmName.replace("-"," ");
+        this.filmName = this.filmName.split("-").join(" ");
         console.log(this.filmName);
         for (let item of films) {
           if (item.title === this.filmName) {
