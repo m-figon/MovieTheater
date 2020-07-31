@@ -6,6 +6,7 @@ import Login from '@/components/Login'
 import Register from '@/components/Register'
 import Repertoire from '@/components/Repertoire'
 import Details from '@/components/Details'
+import Buy from '@/components/Buy'
 
 Vue.use(Router)
 
@@ -36,6 +37,11 @@ export default new Router({
       path: '/:name',
       name: 'Details',
       component: Details
+    },
+    {
+      path: '/:name/buy',
+      name: 'Buy',
+      component: Buy
     }
   ]
 })

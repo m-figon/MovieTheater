@@ -34,7 +34,7 @@
               <div class="line" v-if="cities.name===city">
                 <div v-for="hour in cities.hours">
                   <div class="hour">
-                    <h1>{{hour}}</h1>
+                    <h1>{{hour.hour}}</h1>
                   </div>
                 </div>
               </div>

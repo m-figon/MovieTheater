@@ -9,13 +9,6 @@
         <div class="details-display">
           <h2>{{film.title.toUpperCase()}}</h2>
           <div class="big-line">
-            <div class="line">
-              <h1 id="gray">{{film.type}}</h1>
-              <div class="separator"></div>
-              <h1 id="gray">Above {{film.age}}</h1>
-              <div class="separator"></div>
-              <h1 id="gray">{{film.duration}}</h1>
-            </div>
             <div class="city-div">
               <select v-model="city">
                 <option value="City">Choose city</option>
@@ -23,21 +16,28 @@
               </select>
             </div>
           </div>
-          <div class="description">
-            <div class="left">
-              <youtube :video-id="film.trailer" ref="youtube"></youtube>
-            </div>
-            <div class="right">
-              <p>{{film.description}}</p>
-            </div>
-          </div>
           <div class="hour-line" v-if="city!='City'">
             <div v-for="cities in film.cities">
               <div class="line" v-if="cities.name===city">
                 <div v-for="hour in cities.hours">
-                  <div class="hour">
+                  <div v-on:click="chooseHour(hour.seats)" class="hour">
                     <h1>{{hour.hour}}</h1>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="seats" v-if="rows">
+            <div class="row" v-for="(row,index) in rows">
+              <div v-for="(seat,key) in row">
+                <div v-if="seat==='0'">
+                  <button v-on:click="chooseGreen(index,key)" id="green"></button>
+                </div>
+                <div v-if="seat==='1'">
+                  <button v-on:click="chooseRed()" id="red"></button>
+                </div>
+                <div v-if="seat!=='0' && seat!=='1'">
+                  <p>{{seat}}</p>
                 </div>
               </div>
             </div>
@@ -55,6 +55,7 @@ export default {
       film: null,
       cities: [],
       city: "City",
+      rows: null,
     };
   },
   created() {
@@ -63,9 +64,10 @@ export default {
       .then((data) => {
         let films = [];
         films = data.slice();
+        console.log("buy");
         this.filmName = this.$route.path;
-        this.filmName = this.filmName.substr(1);
-        this.filmName = this.filmName.replace("-"," ");
+        this.filmName = this.filmName.substr(1, this.filmName.length - 5);
+        this.filmName = this.filmName.replace("-", " ");
         console.log(this.filmName);
         for (let item of films) {
           if (item.title === this.filmName) {
@@ -91,6 +93,25 @@ export default {
         console.log(this.cities);
       });
   },
+  methods: {
+    chooseHour(str) {
+      this.rows = str.split(",");
+      console.log(this.rows);
+    },
+    setCharAt(str,index,chr) {
+    if(index > str.length-1) return str;
+    return str.substr(0,index) + chr + str.substr(index+1);
+    },
+    chooseGreen(id1,id2){
+        let tmp=this.rows.slice();
+        tmp[id1]=this.setCharAt(tmp[id1],id2,'1');
+        this.rows=tmp.slice();
+        console.log(this.rows);
+    },
+    chooseRed(){
+        alert('this place is unavailable');
+    },
+  },
 };
 </script>
 
@@ -106,6 +127,26 @@ export default {
   flex-direction: column;
   background-size: 100% 100%;
 }
+.row button {
+  width: 3rem;
+  height: 3rem;
+  margin: 0.2rem;
+}
+.row button:hover {
+  cursor: pointer;
+}
+#green {
+  background-color: green;
+}
+#green:hover {
+  background-color: rgb(1, 163, 1);
+}
+#red {
+  background-color: red;
+}
+#red:hover {
+  background-color: rgb(196, 39, 39);
+}
 .details-black {
   background: rgba(0, 0, 0, 0.699);
   position: relative;
@@ -113,6 +154,9 @@ export default {
   left: 0;
   z-index: 3;
   padding-top: 3rem;
+}
+.row {
+  display: flex;
 }
 .details-display {
   width: 50rem;
@@ -148,7 +192,7 @@ export default {
   padding: 1rem 1rem;
   font-size: 1rem;
   background: rgba(0, 0, 0, 0.541);
-  border-radius:20px;
+  border-radius: 20px;
 }
 .description {
   width: 120%;
