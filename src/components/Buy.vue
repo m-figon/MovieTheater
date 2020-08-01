@@ -15,6 +15,11 @@
                 <option v-for="city in cities" v-bind:value="city">{{city}}</option>
               </select>
             </div>
+            <div class="calendar">
+              <button v-on:click="subtractDay()" id="left-arrow"></button>
+              <h1>{{date}}</h1>
+              <button v-on:click="addDay()" id="right-arrow"></button>
+            </div>
           </div>
           <div class="hour-line" v-if="city!='City'">
             <div v-for="cities in film.cities">
@@ -72,7 +77,7 @@
 
 <script>
 import store from "../store/index";
-
+import moment from "moment";
 export default {
   store,
   data() {
@@ -89,9 +94,12 @@ export default {
       hourValue: null,
       users: [],
       seats: [],
+      date: null,
     };
   },
   created() {
+    this.date = moment().format("ll");
+
     fetch("https://rocky-citadel-32862.herokuapp.com/MovieTheater/films")
       .then((response) => response.json())
       .then((data) => {
@@ -161,7 +169,9 @@ export default {
   },
   methods: {
     chooseHour(e, str, i) {
+      this.hourValue=e.target.innerHTML;
       console.log(e.target);
+      console.log(this.hourValue);
       if (this.previousTarget) {
         this.previousTarget.style.backgroundColor = "black";
       } else {
@@ -193,13 +203,21 @@ export default {
       console.log(this.rows);
       let second = id2;
       let first;
-      switch(id1){
-        case 0: first="A"; break;
-        case 1: first="B"; break;
-        case 2: first="C"; break;
-        case 3: first="D"; break;
+      switch (id1) {
+        case 0:
+          first = "A";
+          break;
+        case 1:
+          first = "B";
+          break;
+        case 2:
+          first = "C";
+          break;
+        case 3:
+          first = "D";
+          break;
       }
-      this.seats.push(first+""+second);
+      this.seats.push(first + "" + second);
       console.log(this.seats);
     },
     chooseWhite(id1, id2) {
@@ -262,7 +280,7 @@ export default {
             num = index;
           }
         }
-        ordersValue={
+        ordersValue = {
           title: this.film.title,
           duration: this.film.duration,
           type: this.film.type,
@@ -274,6 +292,7 @@ export default {
           city: this.city,
           hour: this.hourValue,
           seats: this.seats,
+          date: this.date,
           id: this.film.id,
         };
         let ordersToSend = this.users[num].orders.slice();
@@ -310,6 +329,14 @@ export default {
       this.$store.commit("changeRegister", true);
       this.$store.commit("changeLogin", false);
     },
+    addDay() {
+      this.date = moment(this.date, "ll").add(1, "d");
+      this.date = moment(this.date).format("ll");
+    },
+    subtractDay() {
+      this.date = moment(this.date, "ll").subtract(1, "d");
+      this.date = moment(this.date).format("ll");
+    },
   },
 };
 </script>
@@ -343,6 +370,40 @@ export default {
 .one-line #pink {
   color: #c8006d;
   margin-left: 1rem;
+  cursor: pointer;
+}
+.calendar {
+  background: black;
+  border: 1px solid #c8006d;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
+  width: 9rem;
+}
+.calendar h1 {
+  font-size: 1rem;
+}
+#left-arrow {
+  width: 1rem;
+  height: 1rem;
+  background: #c8006d;
+  border: 0;
+  clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
+  margin-right: 0.5rem;
+}
+#right-arrow {
+  width: 1rem;
+  height: 1rem;
+  background: #c8006d;
+  border: 0;
+  clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
+  margin-left: 0.5rem;
+}
+#left-arrow:hover,
+#right-arrow:hover {
+  background: #ffffff;
   cursor: pointer;
 }
 .seats button {

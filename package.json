@@ -10,6 +10,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "moment": "^2.27.0",
     "vue": "^2.5.2",
     "vue-easy-slider": "^5.3.2",
     "vue-image-slider": "^1.0.2",
