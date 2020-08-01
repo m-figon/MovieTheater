@@ -21,7 +21,8 @@
               <div class="line" v-if="cities.name===city">
                 <div v-for="(hour,key) in cities.hours">
                   <div
-                    v-on:click="chooseHour($event,hour.seats,key)" ref="divs"
+                    v-on:click="chooseHour($event,hour.seats,key)"
+                    ref="divs"
                     v:bind:id="hourValue===hour.hour ? pink-bg : black-bg"
                     v-bind:style="[hourValue===hour.hour ? {'background': '#c8006d'} : {'background': 'black'}]"
                     class="hour"
@@ -86,6 +87,8 @@ export default {
       logedAc: "",
       params: null,
       hourValue: null,
+      users: [],
+      seats: [],
     };
   },
   created() {
@@ -136,7 +139,7 @@ export default {
           for (let item of this.film.cities) {
             if (item.name === this.city) {
               console.log(item.name + "first step!");
-              for (let [key,elem] of item.hours.entries()) {
+              for (let [key, elem] of item.hours.entries()) {
                 if (elem.hour === this.hourValue) {
                   this.hourIndex = key;
                   console.log(elem.hour + "second step!");
@@ -149,19 +152,25 @@ export default {
           }
         }
       });
+    fetch("https://rocky-citadel-32862.herokuapp.com/MovieTheater/users")
+      .then((response) => response.json())
+      .then((data) => {
+        this.users = data.slice();
+        console.log(this.users);
+      });
   },
   methods: {
     chooseHour(e, str, i) {
       console.log(e.target);
       if (this.previousTarget) {
         this.previousTarget.style.backgroundColor = "black";
-      }else{
-        console.log('no previous target');
-        if (this.$route.query.myprop){
+      } else {
+        console.log("no previous target");
+        if (this.$route.query.myprop) {
           console.log(this.$refs.divs);
-          for(let item of this.$refs.divs){
-            if(item.style.background==='rgb(200, 0, 109)'){
-              item.style.background="black";
+          for (let item of this.$refs.divs) {
+            if (item.style.background === "rgb(200, 0, 109)") {
+              item.style.background = "black";
             }
           }
         }
@@ -182,6 +191,16 @@ export default {
       tmp[id1] = this.setCharAt(tmp[id1], id2, "-");
       this.rows = tmp.slice();
       console.log(this.rows);
+      let second = id2;
+      let first;
+      switch(id1){
+        case 0: first="A"; break;
+        case 1: first="B"; break;
+        case 2: first="C"; break;
+        case 3: first="D"; break;
+      }
+      this.seats.push(first+""+second);
+      console.log(this.seats);
     },
     chooseWhite(id1, id2) {
       let tmp = this.rows.slice();
@@ -227,13 +246,55 @@ export default {
             age: this.film.age,
             rating: this.film.rating,
             cities: this.film.cities,
-            id: this.film.id
+            id: this.film.id,
           }),
           headers: {
             "Content-type": "application/json; charset=UTF-8",
           },
         }
       ).then(() => {
+        let userId;
+        let num;
+        let ordersValue;
+        for (let [index, item] of this.users.entries()) {
+          if (item.account === this.logedAc) {
+            userId = item.id;
+            num = index;
+          }
+        }
+        ordersValue={
+          title: this.film.title,
+          duration: this.film.duration,
+          type: this.film.type,
+          img: this.film.img,
+          trailer: this.film.trailer,
+          description: this.film.description,
+          age: this.film.age,
+          rating: this.film.rating,
+          city: this.city,
+          hour: this.hourValue,
+          seats: this.seats,
+          id: this.film.id,
+        };
+        let ordersToSend = this.users[num].orders.slice();
+        ordersToSend.push(ordersValue);
+        fetch(
+          "https://rocky-citadel-32862.herokuapp.com/MovieTheater/users/" +
+            userId,
+          {
+            method: "PUT",
+            body: JSON.stringify({
+              account: this.users[num].account,
+              email: this.users[num].email,
+              password: this.users[num].password,
+              orders: ordersToSend,
+              id: this.users[num].id,
+            }),
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+            },
+          }
+        );
         alert("seats ordered");
         let url = this.$route.path;
         url = url.substr(1, url.length - 5);

@@ -7,6 +7,7 @@ import Register from '@/components/Register'
 import Repertoire from '@/components/Repertoire'
 import Details from '@/components/Details'
 import Buy from '@/components/Buy'
+import Orders from '@/components/Orders'
 
 Vue.use(Router)
 
@@ -33,6 +34,11 @@ export default new Router({
       path: '/repertoire',
       name: 'Repertoire',
       component: Repertoire
+    },
+    {
+      path: '/orders',
+      name: 'Orders',
+      component: Orders
     }, {
       path: '/:name',
       name: 'Details',
@@ -43,7 +49,7 @@ export default new Router({
       name: 'Buy',
       component: Buy,
       props(route) {
-        return {  myprop: route.query.myprop }
+        return { myprop: route.query.myprop }
       }
     }
   ]

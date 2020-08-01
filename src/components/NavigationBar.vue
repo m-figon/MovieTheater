@@ -21,7 +21,9 @@
           <h1 v-on:click="signOut()">Sign out</h1>
         </div>
         <h1 v-on:click="register()">Sign up</h1>
-        <h1>{{logedAc}}</h1>
+        <router-link to="/orders">
+          <h1>{{logedAc}}</h1>
+        </router-link>
       </div>
     </div>
   </div>
