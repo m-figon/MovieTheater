@@ -138,6 +138,9 @@ a {
   align-items: center;
   border: 1px solid #c8006d;
 }
+.line a{
+  color:white;
+}
 .hour:hover {
   background: #c8006d;
   cursor: pointer;

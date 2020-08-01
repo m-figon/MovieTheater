@@ -35,9 +35,13 @@
             <div v-for="cities in film.cities">
               <div class="line" v-if="cities.name===city">
                 <div v-for="hour in cities.hours">
-                  <div class="hour">
-                    <h1>{{hour.hour}}</h1>
-                  </div>
+                  <router-link
+                    :to="{ path: myTrim(film.title.toLowerCase())+'/buy', query: { myprop: (`${city}-${hour.hour}`) } }"
+                  >
+                    <div class="hour">
+                      <h1>{{hour.hour}}</h1>
+                    </div>
+                  </router-link>
                 </div>
               </div>
             </div>
@@ -91,6 +95,11 @@ export default {
         console.log(this.cities);
       });
   },
+  methods:{
+    myTrim(x) {
+      return x.replace(/\s/g, "-");
+    }
+  }
 };
 </script>
 
@@ -121,6 +130,10 @@ export default {
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
+}
+.line a{
+  text-decoration: none;
+  color: white;
 }
 .separator {
   background: white;

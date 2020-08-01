@@ -21,7 +21,8 @@
               <div class="line" v-if="cities.name===city">
                 <div v-for="(hour,key) in cities.hours">
                   <div
-                    v-on:click="chooseHour($event,hour.seats,key)"
+                    v-on:click="chooseHour($event,hour.seats,key)" ref="divs"
+                    v:bind:id="hourValue===hour.hour ? pink-bg : black-bg"
                     v-bind:style="[hourValue===hour.hour ? {'background': '#c8006d'} : {'background': 'black'}]"
                     class="hour"
                   >
@@ -135,8 +136,9 @@ export default {
           for (let item of this.film.cities) {
             if (item.name === this.city) {
               console.log(item.name + "first step!");
-              for (let elem of item.hours) {
+              for (let [key,elem] of item.hours.entries()) {
                 if (elem.hour === this.hourValue) {
+                  this.hourIndex = key;
                   console.log(elem.hour + "second step!");
                   this.rows = elem.seats;
                   this.rows = this.rows.split(",");
@@ -153,6 +155,16 @@ export default {
       console.log(e.target);
       if (this.previousTarget) {
         this.previousTarget.style.backgroundColor = "black";
+      }else{
+        console.log('no previous target');
+        if (this.$route.query.myprop){
+          console.log(this.$refs.divs);
+          for(let item of this.$refs.divs){
+            if(item.style.background==='rgb(200, 0, 109)'){
+              item.style.background="black";
+            }
+          }
+        }
       }
       e.target.style.backgroundColor = "#c8006d";
       this.previousTarget = e.target;
@@ -193,10 +205,14 @@ export default {
           cityIndex = i;
         }
       }
-      this.film.cities[cityIndex].hours[this.hourIndex].seats = tmp;
       console.log(this.film);
       console.log(this.film.cities);
       console.log(this.film.id);
+      console.log(cityIndex);
+      console.log(this.hourIndex);
+
+      this.film.cities[cityIndex].hours[this.hourIndex].seats = tmp;
+
       fetch(
         "https://rocky-citadel-32862.herokuapp.com/MovieTheater/films/" +
           this.film.id,
@@ -211,6 +227,7 @@ export default {
             age: this.film.age,
             rating: this.film.rating,
             cities: this.film.cities,
+            id: this.film.id
           }),
           headers: {
             "Content-type": "application/json; charset=UTF-8",
