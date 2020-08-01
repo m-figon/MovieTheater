@@ -5,7 +5,13 @@
         <option value="City">Choose city</option>
         <option v-for="city in cities" v-bind:value="city">{{city}}</option>
       </select>
+      <div class="calendar">
+      <button v-on:click="subtractDay()" id="left-arrow"></button>
+      <h1>{{date}}</h1>
+      <button v-on:click="addDay()" id="right-arrow"></button>
     </div>
+    </div>
+    
     <div class="films">
       <div v-for="item in films" class="film">
         <div class="left">
@@ -34,7 +40,7 @@
               <div class="line" v-if="cities.name===city">
                 <div v-for="hour in cities.hours">
                   <router-link
-                    :to="{ path: myTrim(item.title.toLowerCase())+'/buy', query: { myprop: (`${city}-${hour.hour}`) } }"
+                    :to="{ path: myTrim(item.title.toLowerCase())+'/buy', query: { myprop: (`${city}-${date}-${hour.hour}`) } }"
                   >
                     <div class="hour">
                       <h1>{{hour.hour}}</h1>
@@ -62,20 +68,32 @@
 </template>
 
 <script>
+import moment from "moment";
+
 export default {
   data() {
     return {
       films: [],
       city: "City",
       cities: [],
+      date: null
     };
   },
   methods: {
     myTrim(x) {
       return x.replace(/\s/g, "-");
     },
+    addDay() {
+      this.date = moment(this.date, "ll").add(1, "d");
+      this.date = moment(this.date).format("ll");
+    },
+    subtractDay() {
+      this.date = moment(this.date, "ll").subtract(1, "d");
+      this.date = moment(this.date).format("ll");
+    },
   },
   created() {
+    this.date = moment().format("ll");
     fetch("https://rocky-citadel-32862.herokuapp.com/MovieTheater/films")
       .then((response) => response.json())
       .then((data) => {
@@ -138,8 +156,8 @@ a {
   align-items: center;
   border: 1px solid #c8006d;
 }
-.line a{
-  color:white;
+.line a {
+  color: white;
 }
 .hour:hover {
   background: #c8006d;
@@ -174,6 +192,41 @@ a {
   height: 1rem;
   margin: 0 0.5rem;
   color: gray;
+}
+.calendar {
+  background: black;
+  border: 1px solid #c8006d;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
+  width: 9rem;
+  margin-left:2rem;
+}
+.calendar h1 {
+  font-size: 1rem;
+}
+#left-arrow {
+  width: 1rem;
+  height: 1rem;
+  background: #c8006d;
+  border: 0;
+  clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
+  margin-right: 0.5rem;
+}
+#right-arrow {
+  width: 1rem;
+  height: 1rem;
+  background: #c8006d;
+  border: 0;
+  clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
+  margin-left: 0.5rem;
+}
+#left-arrow:hover,
+#right-arrow:hover {
+  background: #ffffff;
+  cursor: pointer;
 }
 .left {
   width: 20%;

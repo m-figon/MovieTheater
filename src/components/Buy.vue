@@ -142,7 +142,8 @@ export default {
           //params[0] - city
           //params[1]- hour
           this.city = this.params[0];
-          this.hourValue = this.params[1];
+          this.date= this.params[1];
+          this.hourValue = this.params[2];
           console.log(this.film.cities);
           for (let item of this.film.cities) {
             if (item.name === this.city) {
