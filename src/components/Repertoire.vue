@@ -33,9 +33,13 @@
             <div v-for="cities in item.cities">
               <div class="line" v-if="cities.name===city">
                 <div v-for="hour in cities.hours">
-                  <div class="hour">
-                    <h1>{{hour.hour}}</h1>
-                  </div>
+                  <router-link
+                    :to="{ path: myTrim(item.title.toLowerCase())+'/buy', query: { myprop: (`${city}-${hour.hour}`) } }"
+                  >
+                    <div class="hour">
+                      <h1>{{hour.hour}}</h1>
+                    </div>
+                  </router-link>
                 </div>
               </div>
             </div>
@@ -68,7 +72,7 @@ export default {
   },
   methods: {
     myTrim(x) {
-      return x.replace(/\s/g,'-');
+      return x.replace(/\s/g, "-");
     },
   },
   created() {
@@ -98,7 +102,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-a{
+a {
   text-decoration: none;
   color: #c8006d;
 }

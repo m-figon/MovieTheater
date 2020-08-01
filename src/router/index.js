@@ -41,7 +41,10 @@ export default new Router({
     {
       path: '/:name/buy',
       name: 'Buy',
-      component: Buy
+      component: Buy,
+      props(route) {
+        return {  myprop: route.query.myprop }
+      }
     }
   ]
 })

@@ -15,16 +15,12 @@
           <h1>Our Cinemas</h1>
         </router-link>
         <div v-if="logedAc===''">
-          <router-link to="/login">
-            <h1>Sign in</h1>
-          </router-link>
+          <h1 v-on:click="login()">Sign in</h1>
         </div>
         <div v-else>
           <h1 v-on:click="signOut()">Sign out</h1>
         </div>
-        <router-link to="/register">
-          <h1>Sign up</h1>
-        </router-link>
+        <h1 v-on:click="register()">Sign up</h1>
         <h1>{{logedAc}}</h1>
       </div>
     </div>
@@ -49,6 +45,14 @@ export default {
   methods: {
     signOut() {
       this.$store.commit("changeName", "");
+    },
+    login() {
+      this.$store.commit("changeLogin", true);
+      this.$store.commit("changeRegister", false);
+    },
+    register() {
+      this.$store.commit("changeRegister", true);
+      this.$store.commit("changeLogin", false);
     },
   },
 };
@@ -91,7 +95,7 @@ export default {
   margin: 0 1rem;
   color: white;
 }
-.right h1:hover{
+.right h1:hover {
   cursor: pointer;
 }
 </style>

@@ -2,6 +2,9 @@
   <div class="login">
     <div class="login-form">
       <div class="login-form-content">
+        <div class="x-button">
+          <button v-on:click="quit()">X</button>
+        </div>
         <input
           v-model="account"
           v-on:focus="focusFunc('Account Name',$event,false)"
@@ -85,6 +88,9 @@ export default {
         alert("there isnt such user");
       }
     },
+    quit() {
+      this.$store.commit("changeLogin", false);
+    },
   },
 };
 </script>
@@ -92,11 +98,16 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .login {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100vw;
-  height: calc(100vh - 5rem);
+  height: 100vh;
   display: flex;
   align-items: center;
+  background: rgba(0, 0, 0, 0.5);
   justify-content: center;
+  z-index: 5;
 }
 .login-form {
   border-radius: 30px;
@@ -142,5 +153,13 @@ export default {
 .login-form-content button:hover {
   background: #c8006e71;
   cursor: pointer;
+}
+.x-button {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.x-button button {
+  width: 2rem;
 }
 </style>

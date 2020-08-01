@@ -2,7 +2,7 @@
   <div>
     <div
       class="details"
-      v-if="film"
+      v-if="film && logedAc!==''"
       v-bind:style="[film ? {'background': 'url(' + film.img + ') center no-repeat'} : {'background': '#FFF'}]"
     >
       <div class="details-black">
@@ -20,7 +20,11 @@
             <div v-for="cities in film.cities">
               <div class="line" v-if="cities.name===city">
                 <div v-for="(hour,key) in cities.hours">
-                  <div v-on:click="chooseHour($event,hour.seats,key)" class="hour">
+                  <div
+                    v-on:click="chooseHour($event,hour.seats,key)"
+                    v-bind:style="[hourValue===hour.hour ? {'background': '#c8006d'} : {'background': 'black'}]"
+                    class="hour"
+                  >
                     <h1>{{hour.hour}}</h1>
                   </div>
                 </div>
@@ -49,11 +53,26 @@
         </div>
       </div>
     </div>
+    <div class="details" v-else-if="logedAc===''">
+      <div class="details-content">
+        <div class="one-line">
+          <h1>To buy ticket:</h1>
+          <h1 id="pink" v-on:click="login()">sign in</h1>
+        </div>
+        <div class="one-line">
+          <h1>If you haven't created an account:</h1>
+          <h1 id="pink" v-on:click="register()">sign up</h1>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import store from "../store/index";
+
 export default {
+  store,
   data() {
     return {
       film: null,
@@ -63,6 +82,9 @@ export default {
       hourIndex: null,
       filmId: null,
       previousTarget: null,
+      logedAc: "",
+      params: null,
+      hourValue: null,
     };
   },
   created() {
@@ -99,6 +121,31 @@ export default {
           }
         }
         console.log(this.cities);
+        setInterval(() => {
+          this.logedAc = this.$store.state.user.logedUser;
+        }, 500);
+        if (this.$route.query.myprop) {
+          this.params = this.$route.query.myprop.split("-");
+          console.log(this.params);
+          //params[0] - city
+          //params[1]- hour
+          this.city = this.params[0];
+          this.hourValue = this.params[1];
+          console.log(this.film.cities);
+          for (let item of this.film.cities) {
+            if (item.name === this.city) {
+              console.log(item.name + "first step!");
+              for (let elem of item.hours) {
+                if (elem.hour === this.hourValue) {
+                  console.log(elem.hour + "second step!");
+                  this.rows = elem.seats;
+                  this.rows = this.rows.split(",");
+                  console.log(this.rows);
+                }
+              }
+            }
+          }
+        }
       });
   },
   methods: {
@@ -149,9 +196,10 @@ export default {
       this.film.cities[cityIndex].hours[this.hourIndex].seats = tmp;
       console.log(this.film);
       console.log(this.film.cities);
+      console.log(this.film.id);
       fetch(
         "https://rocky-citadel-32862.herokuapp.com/MovieTheater/films/" +
-          this.filmId,
+          this.film.id,
         {
           method: "PUT",
           body: JSON.stringify({
@@ -168,18 +216,21 @@ export default {
             "Content-type": "application/json; charset=UTF-8",
           },
         }
-      )
-      /*
-      .then(()=>{
-        //alert("seats ordered");
-        
+      ).then(() => {
+        alert("seats ordered");
         let url = this.$route.path;
         url = url.substr(1, url.length - 5);
         console.log(url);
-        this.$router.push('/'+url);
-        
-      })
-      */
+        this.$router.push("/" + url);
+      });
+    },
+    login() {
+      this.$store.commit("changeLogin", true);
+      this.$store.commit("changeRegister", false);
+    },
+    register() {
+      this.$store.commit("changeRegister", true);
+      this.$store.commit("changeLogin", false);
     },
   },
 };
@@ -196,6 +247,25 @@ export default {
   align-items: center;
   flex-direction: column;
   background-size: 100% 100%;
+}
+.details-content {
+  width: 30%;
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.one-line {
+  display: flex;
+}
+.details-content h1 {
+  font-size: 1.2rem;
+}
+.one-line #pink {
+  color: #c8006d;
+  margin-left: 1rem;
+  cursor: pointer;
 }
 .seats button {
   background: #c8006d;

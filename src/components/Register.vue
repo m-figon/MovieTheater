@@ -2,6 +2,9 @@
   <div class="login">
     <div class="login-form">
       <div class="login-form-content">
+        <div class="x-button">
+          <button v-on:click="quit()">X</button>
+        </div>
         <input
           v-model="account"
           v-on:focus="focusFunc('Account Name',$event,0)"
@@ -43,7 +46,10 @@
 </template>
 
 <script>
+import store from "../store/index";
+
 export default {
+  store,
   data() {
     return {
       account: "Account Name",
@@ -115,10 +121,10 @@ export default {
       this.password2 = "Confirm Password";
       this.type1 = "text";
       this.type2 = "text";
-      this.accountShow=false;
-      this.emailShow=false;
-      this.passwordShow=false;
-      this.password2Show=false;
+      this.accountShow = false;
+      this.emailShow = false;
+      this.passwordShow = false;
+      this.password2Show = false;
     },
     ifCheck(condition) {
       if (condition) {
@@ -155,23 +161,23 @@ export default {
           )
       );
       if (this.registerFlag) {
-        fetch(
-          "https://rocky-citadel-32862.herokuapp.com/MovieTheater/users",
-          {
-            method: "POST",
-            body: JSON.stringify({
-              email: this.email,
-              account: this.account,
-              password: this.password,
-            }),
-            headers: {
-              "Content-type": "application/json; charset=UTF-8",
-            },
-          }
-        );
+        fetch("https://rocky-citadel-32862.herokuapp.com/MovieTheater/users", {
+          method: "POST",
+          body: JSON.stringify({
+            email: this.email,
+            account: this.account,
+            password: this.password,
+          }),
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+        });
         this.valuesReset();
         alert("New user created");
       }
+    },
+    quit() {
+      this.$store.commit("changeRegister", false);
     },
   },
 };
@@ -180,11 +186,16 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .login {
+  position: absolute;
+  top:0;
+  left:0;
   width: 100vw;
-  height: calc(100vh - 5rem);
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 5;
 }
 .login-form {
   border-radius: 30px;
@@ -230,5 +241,13 @@ export default {
 .login-form-content button:hover {
   background: #c8006e71;
   cursor: pointer;
+}
+.x-button {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.x-button button {
+  width: 2rem;
 }
 </style>
