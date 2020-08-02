@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
-import Cinemas from '@/components/Cinemas'
+import Prices from '@/components/Prices'
 import Login from '@/components/Login'
 import Register from '@/components/Register'
 import Repertoire from '@/components/Repertoire'
@@ -19,9 +19,9 @@ export default new Router({
       component: Home
     },
     {
-      path: '/cinemas',
-      name: 'Cinemas',
-      component: Cinemas
+      path: '/prices',
+      name: 'Prices',
+      component: Prices
     }, {
       path: '/login',
       name: 'Login',

@@ -118,6 +118,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid white;
 }
 .login-form-content {
   width: 70%;

@@ -167,7 +167,7 @@ export default {
             email: this.email,
             account: this.account,
             password: this.password,
-            orders: []
+            orders: [],
           }),
           headers: {
             "Content-type": "application/json; charset=UTF-8",
@@ -188,8 +188,8 @@ export default {
 <style scoped>
 .login {
   position: absolute;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -207,6 +207,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid white;
 }
 .login-form-content {
   width: 70%;

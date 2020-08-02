@@ -11,8 +11,8 @@
           <h1>Repertoire</h1>
         </router-link>
 
-        <router-link to="/cinemas">
-          <h1>Our Cinemas</h1>
+        <router-link to="/prices">
+          <h1>Price List</h1>
         </router-link>
         <div v-if="logedAc===''">
           <h1 v-on:click="login()">Sign in</h1>

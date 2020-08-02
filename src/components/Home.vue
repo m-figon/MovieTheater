@@ -28,12 +28,12 @@ export default {
   },
   created() {
     setInterval(() => {
-      if (window.innerWidth >= 1000) {
-        this.width = window.innerWidth / 2.5;
+      if (window.innerWidth >= 1250) {
+        this.width = window.innerWidth / 1.5;
         this.height = (window.innerHeight * 4) / 5;
-      } else if (window.innerWidth < 1000 && window.innerWidth >= 600) {
-        this.width = window.innerWidth / 2;
-        this.height = window.innerHeight / 2;
+      } else if (window.innerWidth < 1250 && window.innerWidth >= 800) {
+        this.width = window.innerWidth / 1.2;
+        this.height = window.innerHeight /1.5;
       } else {
         this.width = window.innerWidth;
         this.height = window.innerHeight / 2;
@@ -45,7 +45,7 @@ export default {
         this.films = data.slice();
         console.log(this.films);
         for (let item of this.films) {
-          this.posters.push(item.img);
+          this.posters.push(item.homeImg);
         }
       });
   },
@@ -87,7 +87,7 @@ export default {
 .home button {
   position: relative;
   top: -5rem;
-  left: 14%;
+  left: 25%;
   background: #000000;
   width: 10rem;
   font-size: 1.2rem;

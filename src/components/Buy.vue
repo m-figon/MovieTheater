@@ -261,6 +261,28 @@ export default {
       tmp[id1] = this.setCharAt(tmp[id1], id2, "0");
       this.rows = tmp.slice();
       console.log(this.rows);
+      let second = id2;
+      let first;
+      switch (id1) {
+        case 0:
+          first = "A";
+          break;
+        case 1:
+          first = "B";
+          break;
+        case 2:
+          first = "C";
+          break;
+        case 3:
+          first = "D";
+          break;
+      }
+      for(let [index,item] of this.seats.entries()){
+        if(item===(first + "" + second)){
+          this.seats.splice(index,1);
+        }
+      }
+      console.log(this.seats);
     },
     chooseRed() {
       alert("this place is unavailable");
