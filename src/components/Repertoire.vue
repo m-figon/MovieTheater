@@ -6,12 +6,12 @@
         <option v-for="city in cities" v-bind:value="city">{{city}}</option>
       </select>
       <div class="calendar">
-      <button v-on:click="subtractDay()" id="left-arrow"></button>
-      <h1>{{date}}</h1>
-      <button v-on:click="addDay()" id="right-arrow"></button>
+        <button v-on:click="subtractDay()" id="left-arrow"></button>
+        <h1>{{date}}</h1>
+        <button v-on:click="addDay()" id="right-arrow"></button>
+      </div>
     </div>
-    </div>
-    
+
     <div class="films">
       <div v-for="item in films" class="film">
         <div class="left">
@@ -35,17 +35,16 @@
           <div class="p-line">
             <p>{{item.description}}</p>
           </div>
-          <div class="big-line" v-if="city!='City'">
+          <div class="b-line" v-if="city!='City'">
             <div v-for="cities in item.cities">
-              <div class="line" v-if="cities.name===city">
+              <div class="line" id="hours" v-if="cities.name===city">
                 <div v-for="hour in cities.hours">
                   <router-link
                     :to="{ path: myTrim(item.title.toLowerCase())+'/buy', query: { myprop: (`${city}-${date}-${hour.hour}-${hour.type}`) } }"
                   >
                     <div class="hour">
                       <h2>{{hour.hour}}</h2>
-                                            <h1>{{hour.type}}</h1>
-
+                      <h1>{{hour.type}}</h1>
                     </div>
                   </router-link>
                 </div>
@@ -78,7 +77,7 @@ export default {
       films: [],
       city: "City",
       cities: [],
-      date: null
+      date: null,
     };
   },
   methods: {
@@ -167,7 +166,7 @@ a {
   flex-direction: column;
 }
 .film {
-  height: 22rem;
+  height: auto;
   width: 100%;
   border-bottom: 1px solid gray;
   display: flex;
@@ -196,7 +195,7 @@ a {
   align-items: center;
   height: 2rem;
   width: 9rem;
-  margin-left:2rem;
+  margin-left: 2rem;
 }
 .calendar h1 {
   font-size: 1rem;
@@ -232,23 +231,21 @@ a {
   flex-direction: column;
   border: 1px solid #c8006d;
 }
-.hour h1{
+.hour h1 {
   font-size: 1rem;
 }
-.hour h2{
+.hour h2 {
   font-size: 1.4rem;
-  margin-top:0;
+  margin-top: 0;
 }
 .left {
   width: 20%;
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .middle {
   width: 60%;
-  height: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -262,6 +259,12 @@ a {
   width: 100%;
 }
 .p-line {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.b-line {
   height: auto;
   display: flex;
   flex-direction: column;
@@ -283,8 +286,8 @@ a {
   flex-direction: column;
 }
 .left img {
-  width: 90%;
-  height: 70%;
+  width: 10rem;
+  height: 15rem;
   -webkit-box-shadow: 0px 0px 29px -23px rgba(255, 255, 255, 1);
   -moz-box-shadow: 0px 0px 29px -23px rgba(255, 255, 255, 1);
   box-shadow: 0px 0px 29px -23px rgba(255, 255, 255, 1);
@@ -297,5 +300,120 @@ a {
 }
 #gray {
   color: gray;
+}
+#hours{
+  margin-top: 1rem;
+}
+@media only screen and (max-width: 1300px) {
+  .films {
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 1100px) {
+  .hour {
+    width: 5rem;
+    height: 3rem;
+    margin-right: 0.5rem;
+  }
+  .hour h1 {
+    font-size: 0.8rem;
+  }
+  .hour h2 {
+    font-size: 1.2rem;
+    margin-top: 0;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .film h1 {
+    font-size: 0.7rem;
+  }
+  .film h2 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    margin-top: 2rem;
+  }
+  .big-line {
+    height: 5rem;
+  }
+  .middle p {
+    font-size: 0.8rem;
+  }
+  .left img {
+    width: 8rem;
+    height: 12rem;
+  }
+  .hour h2 {
+    margin: 0;
+  }
+  .hour {
+    width: 4.5rem;
+    height: 2.5rem;
+    margin-right: 0.3rem;
+    margin-bottom:0.3rem;
+  }
+  .hour h1 {
+    font-size: 0.7rem;
+  }
+  .hour h2 {
+    font-size: 1rem;
+    margin-top: 0;
+  }
+  #hours {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    margin:0;
+  }
+}
+@media only screen and (max-width: 700px) {
+  .films {
+    width: 95%;
+  }
+   #hours {
+    grid-template-columns: auto auto auto;
+  }
+  .left{
+    width:40%;
+  }
+  .middle{
+    width:50%;
+  }
+  .right{
+    width: 3%
+  }
+  .film{
+    height: 27rem;
+  }
+  .city-div select{
+    font-size: 1rem;
+  }
+  .calendar h1{
+    font-size: 0.8rem;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .hour{
+    width: 4rem;
+    height:2rem;
+  }
+  .hour h2{
+    font-size: 0.8rem;
+  }
+  .hour h1{
+    font-size: 0.7rem;
+  }
+  .city-div select{
+    font-size: 0.8rem;
+  }
+  .calendar h1{
+    font-size: 0.7rem;
+  }
+    #hours {
+    grid-template-columns: auto auto;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .separator{
+    margin: 0 0.2rem;
+  }  
 }
 </style>

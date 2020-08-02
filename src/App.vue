@@ -49,5 +49,6 @@ a {
   font-family: "Lato", sans-serif;
   color: white;
   height: calc(100vh);
+  overflow-x: hidden;
 }
 </style>

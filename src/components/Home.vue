@@ -33,7 +33,7 @@ export default {
         this.height = (window.innerHeight * 4) / 5;
       } else if (window.innerWidth < 1250 && window.innerWidth >= 800) {
         this.width = window.innerWidth / 1.2;
-        this.height = window.innerHeight /1.5;
+        this.height = window.innerHeight / 1.5;
       } else {
         this.width = window.innerWidth;
         this.height = window.innerHeight / 2;
@@ -88,15 +88,11 @@ export default {
   position: relative;
   top: -5rem;
   left: 25%;
-  background: #000000;
+  background: #00000000;
   width: 10rem;
   font-size: 1.2rem;
   height: 3rem;
-  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #434343, #000000);
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #434343, #000000);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: rgba(0, 0, 0, 0.7);
   color: white;
   border: 1.5px solid #c8006d;
 }
@@ -105,5 +101,12 @@ export default {
   -moz-box-shadow: 0px 0px 20px 0px rgba(200, 0, 109, 1);
   box-shadow: 0px 0px 20px 0px rgba(200, 0, 109, 1);
   cursor: pointer;
+}
+@media only screen and (max-width: 800px) {
+  .home button {
+    width: 7rem;
+    font-size: 1rem;
+    height: 2.5rem;
+  }
 }
 </style>

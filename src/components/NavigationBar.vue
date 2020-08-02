@@ -76,28 +76,71 @@ export default {
   display: flex;
   color: white;
 }
-.left {
+.nav-bar-display .left {
   display: flex;
   align-items: center;
   width: 20%;
   justify-content: center;
 }
-.left h2 {
+.nav-bar-display .left h2 {
   font-size: 1.5rem;
   color: #c8006d;
 }
-.right {
+.nav-bar-display .right {
   width: 80%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.right h1 {
+.nav-bar-display .right h1 {
   font-size: 1.2rem;
   margin: 0 1rem;
-  color: white;
+  color: gray;
 }
-.right h1:hover {
+.nav-bar-display .right h1:hover {
+  color: #c8006d;
+}
+.nav-bar-display .right h1:hover {
   cursor: pointer;
+}
+@media only screen and (max-width: 1300px) {
+  .nav-bar-display {
+  width: 80%;
+}
+}
+@media only screen and (max-width: 1000px) {
+  .nav-bar-display .left h2 {
+  font-size: 1.2rem;
+}
+.nav-bar-display .right h1 {
+  font-size: 1.0rem;
+  margin: 0 0.5rem;
+}
+}
+@media only screen and (max-width: 750px) {
+ .nav-bar-display .left {
+  width: 30%;
+}
+.nav-bar-display .right {
+  width: 70%;
+}
+}
+@media only screen and (max-width: 560px) {
+   .nav-bar-display .left {
+  width: 25%;
+}
+.nav-bar-display .right {
+  width: 75%;
+}
+.nav-bar-display {
+  width: 97%;
+}
+  .nav-bar-display .left h2 {
+  font-size: 0.8rem;
+}
+.nav-bar-display .right h1 {
+  font-size: 0.7rem;
+  margin: 0 0.2rem;
+}
 }
 </style>
