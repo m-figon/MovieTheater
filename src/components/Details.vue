@@ -36,10 +36,11 @@
               <div class="line" v-if="cities.name===city">
                 <div v-for="hour in cities.hours">
                   <router-link
-                    :to="{ path: myTrim(film.title.toLowerCase())+'/buy', query: { myprop: (`${city}-${hour.hour}`) } }"
+                    :to="{ path: myTrim(film.title.toLowerCase())+'/buy', query: { myprop: (`${city}-${date}-${hour.hour}-${hour.type}`) } }"
                   >
                     <div class="hour">
-                      <h1>{{hour.hour}}</h1>
+                      <h2>{{hour.hour}}</h2>
+                      <h1>{{hour.type}}</h1>
                     </div>
                   </router-link>
                 </div>
@@ -95,11 +96,11 @@ export default {
         console.log(this.cities);
       });
   },
-  methods:{
+  methods: {
     myTrim(x) {
       return x.replace(/\s/g, "-");
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -131,7 +132,7 @@ export default {
   align-items: center;
   flex-direction: column;
 }
-.line a{
+.line a {
   text-decoration: none;
   color: white;
 }
@@ -161,7 +162,7 @@ export default {
   padding: 1rem 1rem;
   font-size: 1rem;
   background: rgba(0, 0, 0, 0.541);
-  border-radius:20px;
+  border-radius: 20px;
 }
 .description {
   width: 120%;
@@ -217,7 +218,17 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   border: 1px solid #c8006d;
+}
+.hour h1 {
+  font-size: 1rem;
+  margin: 0;
+}
+.hour h2 {
+  font-size: 1.4rem;
+  color: white;
+  margin: 0;
 }
 .hour:hover {
   background: #c8006d;

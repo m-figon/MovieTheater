@@ -23,6 +23,7 @@
             <h1>City: {{item.city}}</h1>
             <h1>Date: {{item.date}}</h1>
             <h1>Hour: {{item.hour}}</h1>
+            <h1>Type: {{item.type}}</h1>
             <div class="line">
               <h1>Seats:</h1>
               <h1 id="seat" v-for="seat in item.seats">{{seat}}</h1>
@@ -95,7 +96,7 @@ a {
   flex-direction: column;
 }
 .film {
-  height: 20rem;
+  height: 23rem;
   width: 100%;
   border-bottom: 1px solid gray;
   display: flex;

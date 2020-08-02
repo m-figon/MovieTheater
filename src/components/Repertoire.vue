@@ -40,10 +40,12 @@
               <div class="line" v-if="cities.name===city">
                 <div v-for="hour in cities.hours">
                   <router-link
-                    :to="{ path: myTrim(item.title.toLowerCase())+'/buy', query: { myprop: (`${city}-${date}-${hour.hour}`) } }"
+                    :to="{ path: myTrim(item.title.toLowerCase())+'/buy', query: { myprop: (`${city}-${date}-${hour.hour}-${hour.type}`) } }"
                   >
                     <div class="hour">
-                      <h1>{{hour.hour}}</h1>
+                      <h2>{{hour.hour}}</h2>
+                                            <h1>{{hour.type}}</h1>
+
                     </div>
                   </router-link>
                 </div>
@@ -147,15 +149,7 @@ a {
   font-size: 1.2rem;
   color: #c8006d;
 }
-.hour {
-  width: 4rem;
-  height: 2.5rem;
-  margin-right: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid #c8006d;
-}
+
 .line a {
   color: white;
 }
@@ -227,6 +221,23 @@ a {
 #right-arrow:hover {
   background: #ffffff;
   cursor: pointer;
+}
+.hour {
+  width: 6rem;
+  height: 4rem;
+  margin-right: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid #c8006d;
+}
+.hour h1{
+  font-size: 1rem;
+}
+.hour h2{
+  font-size: 1.4rem;
+  margin-top:0;
 }
 .left {
   width: 20%;

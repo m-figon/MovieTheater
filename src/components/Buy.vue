@@ -32,7 +32,8 @@
                     v-bind:style="[hourValue===hour.hour ? {'background': '#c8006d'} : {'background': 'black'}]"
                     class="hour"
                   >
-                    <h1>{{hour.hour}}</h1>
+                    <h2>{{hour.hour}}</h2>
+                    <h1>{{hour.type}}</h1>
                   </div>
                 </div>
               </div>
@@ -95,6 +96,7 @@ export default {
       users: [],
       seats: [],
       date: null,
+      typeValue: null,
     };
   },
   created() {
@@ -142,8 +144,9 @@ export default {
           //params[0] - city
           //params[1]- hour
           this.city = this.params[0];
-          this.date= this.params[1];
+          this.date = this.params[1];
           this.hourValue = this.params[2];
+          this.typeValue = this.params[3];
           console.log(this.film.cities);
           for (let item of this.film.cities) {
             if (item.name === this.city) {
@@ -170,28 +173,60 @@ export default {
   },
   methods: {
     chooseHour(e, str, i) {
-      this.hourValue=e.target.innerHTML;
-      console.log(e.target);
-      console.log(this.hourValue);
-      if (this.previousTarget) {
-        this.previousTarget.style.backgroundColor = "black";
-      } else {
-        console.log("no previous target");
-        if (this.$route.query.myprop) {
-          console.log(this.$refs.divs);
-          for (let item of this.$refs.divs) {
-            if (item.style.background === "rgb(200, 0, 109)") {
-              item.style.background = "black";
+      e.stopPropagation();
+      console.log(e.target.tagName);
+      if (e.target.tagName === "DIV") {
+        this.hourValue = e.target.firstChild.innerHTML;
+        this.typeValue = e.target.firstChild.nextElementSibling.innerHTML;
+        console.log(e.target);
+        console.log(this.hourValue);
+        console.log(this.typeValue);
+        if (this.previousTarget) {
+          this.previousTarget.style.backgroundColor = "black";
+        } else {
+          console.log("no previous target");
+          if (this.$route.query.myprop) {
+            console.log(this.$refs.divs);
+            for (let item of this.$refs.divs) {
+              if (item.style.background === "rgb(200, 0, 109)") {
+                item.style.background = "black";
+              }
             }
           }
         }
+        e.target.style.backgroundColor = "#c8006d";
+        this.previousTarget = e.target;
+        this.hourIndex = i;
+        console.log(this.hourIndex);
+        this.rows = str.split(",");
+        console.log(this.rows);
       }
-      e.target.style.backgroundColor = "#c8006d";
-      this.previousTarget = e.target;
-      this.hourIndex = i;
-      console.log(this.hourIndex);
-      this.rows = str.split(",");
-      console.log(this.rows);
+      if (e.target.tagName === "H1" || e.target.tagName === "H2") {
+        this.hourValue = e.target.parentElement.firstChild.innerHTML;
+        this.typeValue =
+          e.target.parentElement.firstChild.nextElementSibling.innerHTML;
+        console.log(e.target);
+        console.log(this.hourValue);
+        if (this.previousTarget) {
+          this.previousTarget.style.backgroundColor = "black";
+        } else {
+          console.log("no previous target");
+          if (this.$route.query.myprop) {
+            console.log(this.$refs.divs);
+            for (let item of this.$refs.divs) {
+              if (item.style.background === "rgb(200, 0, 109)") {
+                item.style.background = "black";
+              }
+            }
+          }
+        }
+        e.target.parentElement.style.backgroundColor = "#c8006d";
+        this.previousTarget = e.target.parentElement;
+        this.hourIndex = i;
+        console.log(this.hourIndex);
+        this.rows = str.split(",");
+        console.log(this.rows);
+      }
     },
     setCharAt(str, index, chr) {
       if (index > str.length - 1) return str;
@@ -292,6 +327,7 @@ export default {
           rating: this.film.rating,
           city: this.city,
           hour: this.hourValue,
+          type: this.typeValue,
           seats: this.seats,
           date: this.date,
           id: this.film.id,
@@ -547,14 +583,18 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   border: 1px solid #c8006d;
 }
 .hour h1 {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  font-size: 1rem;
+  color: white;
+  margin: 0;
+}
+.hour h2 {
+  font-size: 1.4rem;
+  color: white;
+  margin: 0;
 }
 .hour:hover {
   background: #c8006d;
