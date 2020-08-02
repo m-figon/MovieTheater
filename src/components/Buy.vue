@@ -39,24 +39,46 @@
               </div>
             </div>
           </div>
-          <div class="seats" v-if="rows">
-            <div class="row" v-for="(row,index) in rows">
-              <div v-for="(seat,key) in row">
-                <div v-if="seat==='0'">
-                  <button v-on:click="chooseGreen(index,key)" id="green"></button>
-                </div>
-                <div v-if="seat==='-'">
-                  <button v-on:click="chooseWhite(index,key)" id="white"></button>
-                </div>
-                <div v-if="seat==='1'">
-                  <button v-on:click="chooseRed()" id="red"></button>
-                </div>
-                <div v-if="seat!=='0' && seat!=='1' && seat!=='-'">
-                  <p>{{seat}}</p>
+          <div class="seats" v-if="rows && city!=='City'">
+            <div class="left">
+              <div class="row" v-for="(row,index) in rows">
+                <div v-for="(seat,key) in row">
+                  <div v-if="seat==='0'">
+                    <button v-on:click="chooseGreen(index,key)" id="green"></button>
+                  </div>
+                  <div v-if="seat==='-'">
+                    <button v-on:click="chooseWhite(index,key)" id="white"></button>
+                  </div>
+                  <div v-if="seat==='1'">
+                    <button v-on:click="chooseRed()" id="red"></button>
+                  </div>
+                  <div v-if="seat!=='0' && seat!=='1' && seat!=='-'">
+                    <p>{{seat}}</p>
+                  </div>
                 </div>
               </div>
             </div>
-            <button v-on:click="order()">Order</button>
+            <div class="right">
+              <div class="line">
+                <select v-model="adults">
+                  <option v-for="n in 51" v-bind:value="parseInt(n-1)">{{ n-1 }}</option>
+                </select>
+                <h1>Adults</h1>
+              </div>
+              <div class="line">
+                <select v-model="students">
+                  <option v-for="n in 51" v-bind:value="parseInt(n-1)">{{ n-1 }}</option>
+                </select>
+                <h1>Students</h1>
+              </div>
+              <div class="line">
+                <select v-model="children">
+                  <option v-for="n in 51" v-bind:value="parseInt(n-1)">{{ n-1 }}</option>
+                </select>
+                <h1>Children</h1>
+              </div>
+              <button v-on:click="order()">Order</button>
+            </div>
           </div>
         </div>
       </div>
@@ -97,6 +119,10 @@ export default {
       seats: [],
       date: null,
       typeValue: null,
+      adults: 0,
+      students: 0,
+      children: 0,
+      price: 0,
     };
   },
   created() {
@@ -277,9 +303,9 @@ export default {
           first = "D";
           break;
       }
-      for(let [index,item] of this.seats.entries()){
-        if(item===(first + "" + second)){
-          this.seats.splice(index,1);
+      for (let [index, item] of this.seats.entries()) {
+        if (item === first + "" + second) {
+          this.seats.splice(index, 1);
         }
       }
       console.log(this.seats);
@@ -288,97 +314,107 @@ export default {
       alert("this place is unavailable");
     },
     order() {
-      let tmp = "";
-      for (let item of this.rows) {
-        tmp += item;
-        tmp += ",";
-      }
-      tmp = tmp.split("-").join("1");
-      let cityIndex = null;
-      for (let i = 0; i < this.cities.length; i++) {
-        if (this.cities[i] === this.city) {
-          cityIndex = i;
+      if (
+        this.seats.length ==
+        parseInt(this.adults) +
+          parseInt(this.students) +
+          parseInt(this.children)
+      ) {
+        let tmp = "";
+        for (let item of this.rows) {
+          tmp += item;
+          tmp += ",";
         }
-      }
-      console.log(this.film);
-      console.log(this.film.cities);
-      console.log(this.film.id);
-      console.log(cityIndex);
-      console.log(this.hourIndex);
-
-      this.film.cities[cityIndex].hours[this.hourIndex].seats = tmp;
-
-      fetch(
-        "https://rocky-citadel-32862.herokuapp.com/MovieTheater/films/" +
-          this.film.id,
-        {
-          method: "PUT",
-          body: JSON.stringify({
-            title: this.film.title,
-            duration: this.film.duration,
-            img: this.film.img,
-            trailer: this.film.trailer,
-            description: this.film.description,
-            age: this.film.age,
-            rating: this.film.rating,
-            cities: this.film.cities,
-            id: this.film.id,
-          }),
-          headers: {
-            "Content-type": "application/json; charset=UTF-8",
-          },
-        }
-      ).then(() => {
-        let userId;
-        let num;
-        let ordersValue;
-        for (let [index, item] of this.users.entries()) {
-          if (item.account === this.logedAc) {
-            userId = item.id;
-            num = index;
+        tmp = tmp.split("-").join("1");
+        let cityIndex = null;
+        for (let i = 0; i < this.cities.length; i++) {
+          if (this.cities[i] === this.city) {
+            cityIndex = i;
           }
         }
-        ordersValue = {
-          title: this.film.title,
-          duration: this.film.duration,
-          type: this.film.type,
-          img: this.film.img,
-          trailer: this.film.trailer,
-          description: this.film.description,
-          age: this.film.age,
-          rating: this.film.rating,
-          city: this.city,
-          hour: this.hourValue,
-          type: this.typeValue,
-          seats: this.seats,
-          date: this.date,
-          id: this.film.id,
-        };
-        let ordersToSend = this.users[num].orders.slice();
-        ordersToSend.push(ordersValue);
+        console.log(this.film);
+        console.log(this.film.cities);
+        console.log(this.film.id);
+        console.log(cityIndex);
+        console.log(this.hourIndex);
+
+        this.film.cities[cityIndex].hours[this.hourIndex].seats = tmp;
+
         fetch(
-          "https://rocky-citadel-32862.herokuapp.com/MovieTheater/users/" +
-            userId,
+          "https://rocky-citadel-32862.herokuapp.com/MovieTheater/films/" +
+            this.film.id,
           {
             method: "PUT",
             body: JSON.stringify({
-              account: this.users[num].account,
-              email: this.users[num].email,
-              password: this.users[num].password,
-              orders: ordersToSend,
-              id: this.users[num].id,
+              title: this.film.title,
+              duration: this.film.duration,
+              img: this.film.img,
+              trailer: this.film.trailer,
+              description: this.film.description,
+              age: this.film.age,
+              rating: this.film.rating,
+              cities: this.film.cities,
+              id: this.film.id,
             }),
             headers: {
               "Content-type": "application/json; charset=UTF-8",
             },
           }
-        );
-        alert("seats ordered");
-        let url = this.$route.path;
-        url = url.substr(1, url.length - 5);
-        console.log(url);
-        this.$router.push("/" + url);
-      });
+        ).then(() => {
+          let userId;
+          let num;
+          let ordersValue;
+          for (let [index, item] of this.users.entries()) {
+            if (item.account === this.logedAc) {
+              userId = item.id;
+              num = index;
+            }
+          }
+          ordersValue = {
+            title: this.film.title,
+            duration: this.film.duration,
+            type: this.film.type,
+            img: this.film.img,
+            trailer: this.film.trailer,
+            description: this.film.description,
+            age: this.film.age,
+            rating: this.film.rating,
+            city: this.city,
+            hour: this.hourValue,
+            type: this.typeValue,
+            seats: this.seats,
+            price: this.price,
+            date: this.date,
+            id: this.film.id,
+          };
+          let ordersToSend = this.users[num].orders.slice();
+          ordersToSend.push(ordersValue);
+          fetch(
+            "https://rocky-citadel-32862.herokuapp.com/MovieTheater/users/" +
+              userId,
+            {
+              method: "PUT",
+              body: JSON.stringify({
+                account: this.users[num].account,
+                email: this.users[num].email,
+                password: this.users[num].password,
+                orders: ordersToSend,
+                id: this.users[num].id,
+              }),
+              headers: {
+                "Content-type": "application/json; charset=UTF-8",
+              },
+            }
+          );
+          alert("seats ordered");
+          let url = this.$route.path;
+          url = url.substr(1, url.length - 5);
+          console.log(url);
+          this.$router.push("/" + url);
+        });
+      } else {
+        alert("not enough person");
+      }
     },
     login() {
       this.$store.commit("changeLogin", true);
@@ -395,6 +431,31 @@ export default {
     subtractDay() {
       this.date = moment(this.date, "ll").subtract(1, "d");
       this.date = moment(this.date).format("ll");
+    },
+    calculatPrice() {
+      this.price = 0;
+      if (this.typeValue.includes("2D")) {
+        this.price += this.adults * 9.3;
+        this.price += this.students * 7.44;
+        this.price += this.children * 4.65;
+      } else if (this.typeValue.includes("3D")) {
+        this.price += this.adults * 10.0;
+        this.price += this.students * 8.0;
+        this.price += this.children * 5.0;
+      }
+      this.price = this.price.toFixed(2);
+      console.log(this.price);
+    },
+  },
+  watch: {
+    adults: function () {
+      this.calculatPrice();
+    },
+    students: function () {
+      this.calculatPrice();
+    },
+    children: function () {
+      this.calculatPrice();
     },
   },
 };
@@ -621,5 +682,37 @@ export default {
 .hour:hover {
   background: #c8006d;
   cursor: pointer;
+}
+.seats {
+  display: flex;
+  width: 100%;
+}
+.seats .left {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.seats .right {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.line select {
+  background: rgba(0, 0, 0, 0);
+  border: 0;
+  border-bottom: 1px solid gray;
+  width: 3rem;
+  height: 2rem;
+  font-size: 1.2rem;
+  color: #c8006d;
+}
+.right .line h1 {
+  font-size: 1.2rem;
+  color: #c8006d;
+  margin-left: 1rem;
 }
 </style>
