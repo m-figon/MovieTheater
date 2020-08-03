@@ -76,37 +76,6 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.home {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin-top: 2rem;
-}
-.home button {
-  position: relative;
-  top: -5rem;
-  left: 25%;
-  background: #00000000;
-  width: 10rem;
-  font-size: 1.2rem;
-  height: 3rem;
-  background: rgba(0, 0, 0, 0.7);
-  color: white;
-  border: 1.5px solid #c8006d;
-}
-.home button:hover {
-  -webkit-box-shadow: 0px 0px 20px 0px rgba(200, 0, 109, 1);
-  -moz-box-shadow: 0px 0px 20px 0px rgba(200, 0, 109, 1);
-  box-shadow: 0px 0px 20px 0px rgba(200, 0, 109, 1);
-  cursor: pointer;
-}
-@media only screen and (max-width: 800px) {
-  .home button {
-    width: 7rem;
-    font-size: 1rem;
-    height: 2.5rem;
-  }
-}
+<style scoped src="../style.css">
+
 </style>

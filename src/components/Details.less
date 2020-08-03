@@ -1,0 +1,269 @@
+.details,
+.details-black {
+  width: 100%;
+  height: calc(100vh - 5rem);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  background-size: 100% 100%;
+}
+.details-black {
+  background: rgba(0, 0, 0, 0.699);
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  padding-top: 3rem;
+}
+.details-display {
+  width: 50rem;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  .left,
+  .right {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.right {
+  padding: 0 2rem;
+  p {
+    padding: 1rem 1rem;
+    font-size: 1rem;
+    background: rgba(0, 0, 0, 0.541);
+    border-radius: 20px;
+  }
+}
+}
+.line a {
+  text-decoration: none;
+  color: white;
+}
+.separator {
+  background: white;
+  width: 1px;
+  height: 1rem;
+  margin: 0 0.5rem;
+  color: white;
+}
+.details h2 {
+  color: #c8006d;
+  font-size: 4rem;
+  margin: 0;
+}
+.description {
+  width: 120%;
+  display: flex;
+}
+#pink {
+  color: #c8006d;
+}
+#white {
+  color: white;
+  font-size: 1rem;
+}
+.big-line {
+  height: 6rem;
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin-top: 3rem;
+}
+.hour-line {
+  height: 6rem;
+  display: flex;
+  flex-direction: row;
+  margin-top: 3rem;
+}
+.line {
+  height: 50%;
+  display: flex;
+  align-items: center;
+  width: 50%;
+}
+.city-div {
+  width: 50%;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  select {
+    background: rgba(0, 0, 0, 0);
+    border: 0;
+    border-bottom: 1px solid gray;
+    width: 10rem;
+    height: 2rem;
+    font-size: 1.2rem;
+    color: #c8006d;
+  }
+}
+
+.hour {
+  background: rgba(0, 0, 0, 0.5);
+  width: 8rem;
+  height: 4rem;
+  margin-right: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid #c8006d;
+  h1 {
+    font-size: 1rem;
+    margin: 0;
+  }
+  h2 {
+    font-size: 1.4rem;
+    color: white;
+    margin: 0;
+  }
+  &:hover {
+    background: #c8006d;
+    cursor: pointer;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .details {
+    h2{
+        font-size: 3rem;
+      }
+  }
+  .description{
+    width:80%;
+  }
+  .hour{
+    width:6rem;
+    h2{
+        font-size: 1.5rem;
+      }
+  }
+  
+  .details-display {
+    .right{
+        p{
+            width:40rem;
+          }
+    }
+  }
+}
+@media only screen and (max-width: 800px) {
+  .details {
+    h2{
+        font-size: 2rem;
+      }
+  }
+  .description{
+    width:60%;
+  }
+  #white{
+    font-size: 0.8rem;
+  }
+  .city-div{
+    height:2rem;
+    select{
+        font-size: 1rem;
+      }
+  }
+  .big-line{
+    width:60%;
+  }
+  
+  .details-display {
+    .right{
+        p{
+            font-size: 0.8rem;
+            margin-left: 1rem;
+            padding: 1rem;
+            width:30rem;
+        
+          }
+    }
+  }
+  .hour{
+    width:5rem;
+    margin-right: 0.5rem;
+    h2{
+        font-size: 1.2rem;
+      }
+      h1{
+        font-size: 0.8rem;
+      }
+  }
+}
+@media only screen and (max-width: 600px) {
+  .details {
+    h2{
+        font-size: 1.5rem;
+      }
+  }
+  .description{
+    width:60%;
+    flex-direction: column;
+  }
+  #white{
+    font-size: 0.7rem;
+  }
+  .big-line{
+    width:50%;
+  }
+  .city-div {
+    select{
+        font-size: 1rem;
+      }
+  }
+  .details-display {
+    .left,
+    .right{
+      width:100%;
+      padding:0;
+    }
+    .right {
+        p{
+            font-size: 0.7rem;
+            padding: 1rem;
+            width:auto;
+          }
+    }
+  }
+  .description{
+    width:50%;
+  }
+  .hour-line{
+    margin-top: 0;
+    .line{
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+      }
+  }
+  .hour{
+    width:5rem;
+    margin-right: 0.5rem;
+    h2{
+        font-size: 1.2rem;
+      }
+      h1{
+        font-size: 0.8rem;
+      }
+  }
+  
+}
+@media only screen and (max-width: 450px) {
+  .description,.big-line{
+    width:40%;
+  }
+  .separator{
+    margin: 0 0.2rem;
+  }
+  .hour-line{
+    .line{
+        display: grid;
+        grid-template-columns: auto auto auto;
+      }
+  }
+}
