@@ -1,0 +1,250 @@
+.details {
+  width: 100%;
+  height: calc(100vh - 5rem);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  background-size: 100% 100%;
+}
+.details h2 {
+  color: #c8006d;
+  font-size: 4rem;
+  margin: 0;
+}
+.details .details-black {
+  width: 100%;
+  height: calc(100vh - 5rem);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  background-size: 100% 100%;
+}
+.details .details-black {
+  background: rgba(0, 0, 0, 0.699);
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  padding-top: 3rem;
+}
+.details .details-display {
+  width: 50rem;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+.details .details-display .left,
+.details .details-display .right {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.details .details-display .right {
+  padding: 0 2rem;
+}
+.details .details-display .right p {
+  padding: 1rem 1rem;
+  font-size: 1rem;
+  background: rgba(0, 0, 0, 0.541);
+  border-radius: 20px;
+}
+.details .line a {
+  text-decoration: none;
+  color: white;
+}
+.details .separator {
+  background: white;
+  width: 1px;
+  height: 1rem;
+  margin: 0 0.5rem;
+  color: white;
+}
+.details .description {
+  width: 120%;
+  display: flex;
+}
+.details #pink {
+  color: #c8006d;
+}
+.details #white {
+  color: white;
+  font-size: 1rem;
+}
+.details .big-line {
+  height: 6rem;
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin-top: 3rem;
+}
+.details .hour-line {
+  height: 6rem;
+  display: flex;
+  flex-direction: row;
+  margin-top: 3rem;
+}
+.details .line {
+  height: 50%;
+  display: flex;
+  align-items: center;
+  width: 50%;
+}
+.details .city-div {
+  width: 50%;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.details .city-div select {
+  background: rgba(0, 0, 0, 0);
+  border: 0;
+  border-bottom: 1px solid gray;
+  width: 10rem;
+  height: 2rem;
+  font-size: 1.2rem;
+  color: #c8006d;
+}
+.details .hour {
+  background: rgba(0, 0, 0, 0.5);
+  width: 8rem;
+  height: 4rem;
+  margin-right: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid #c8006d;
+}
+.details .hour h1 {
+  font-size: 1rem;
+  margin: 0;
+}
+.details .hour h2 {
+  font-size: 1.4rem;
+  color: white;
+  margin: 0;
+}
+.details .hour:hover {
+  background: #c8006d;
+  cursor: pointer;
+}
+@media only screen and (max-width: 1100px) {
+  .details h2 {
+    font-size: 3rem;
+  }
+  .details .description {
+    width: 80%;
+  }
+  .details .hour {
+    width: 6rem;
+  }
+  .details .hour h2 {
+    font-size: 1.5rem;
+  }
+  .details .details-display .right p {
+    width: 40rem;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .details h2 {
+    font-size: 2rem;
+  }
+  .details .description {
+    width: 60%;
+  }
+  .details #white {
+    font-size: 0.8rem;
+  }
+  .details .city-div {
+    height: 2rem;
+  }
+  .details .city-div select {
+    font-size: 1rem;
+  }
+  .details .big-line {
+    width: 60%;
+  }
+  .details .details-display .right p {
+    font-size: 0.8rem;
+    margin-left: 1rem;
+    padding: 1rem;
+    width: 30rem;
+  }
+  .details .hour {
+    width: 5rem;
+    margin-right: 0.5rem;
+  }
+  .details .hour h2 {
+    font-size: 1.2rem;
+  }
+  .details .hour h1 {
+    font-size: 0.8rem;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .details h2 {
+    font-size: 1.5rem;
+  }
+  .details .description {
+    width: 60%;
+    flex-direction: column;
+  }
+  .details #white {
+    font-size: 0.7rem;
+  }
+  .details .big-line {
+    width: 50%;
+  }
+  .details .city-div select {
+    font-size: 1rem;
+  }
+  .details .details-display .left,
+  .details .details-display .right {
+    width: 100%;
+    padding: 0;
+  }
+  .details .details-display .right p {
+    font-size: 0.7rem;
+    padding: 1rem;
+    width: auto;
+  }
+  .details .description {
+    width: 50%;
+  }
+  .details .hour-line {
+    margin-top: 0;
+  }
+  .details .hour-line .line {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+  }
+  .details .hour {
+    width: 5rem;
+    margin-right: 0.5rem;
+  }
+  .details .hour h2 {
+    font-size: 1.2rem;
+  }
+  .details .hour h1 {
+    font-size: 0.8rem;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .details .description,
+  .details .big-line {
+    width: 40%;
+  }
+  .details .separator {
+    margin: 0 0.2rem;
+  }
+  .details .hour-line .line {
+    display: grid;
+    grid-template-columns: auto auto auto;
+  }
+}

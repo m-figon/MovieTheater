@@ -1,0 +1,450 @@
+.buy {
+  width: 100%;
+  height: calc(100vh - 5rem);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  background-size: 100% 100%;
+}
+.buy h2 {
+  color: #c8006d;
+  font-size: 4rem;
+  margin: 0;
+}
+.buy .buy-black {
+  width: 100%;
+  height: calc(100vh - 5rem);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  background-size: 100% 100%;
+}
+.buy .buy-content {
+  height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.buy .buy-content h1 {
+  font-size: 1.2rem;
+}
+.buy .one-line {
+  display: flex;
+}
+.buy .one-line #pink {
+  color: #c8006d;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+.buy .calendar {
+  background: black;
+  border: 1px solid #c8006d;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
+  width: 9rem;
+}
+.buy .calendar h1 {
+  font-size: 1rem;
+}
+.buy #left-arrow,
+.buy #right-arrow {
+  width: 1rem;
+  height: 1rem;
+  background: #c8006d;
+  border: 0;
+  margin-right: 0.5rem;
+}
+.buy #left-arrow:hover,
+.buy #right-arrow:hover {
+  background: #ffffff;
+  cursor: pointer;
+}
+.buy #left-arrow {
+  clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
+}
+.buy #right-arrow {
+  clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
+}
+.buy .seats button {
+  background: #c8006d;
+  border-radius: 10px;
+  border: 1px solid gray;
+  width: 4rem;
+  height: 2rem;
+  font-size: 1.2rem;
+  color: white;
+  margin: 1rem 0;
+}
+.buy .seats button:hover {
+  cursor: pointer;
+}
+.buy .seats .left {
+  flex-direction: column;
+}
+.buy .row {
+  display: flex;
+}
+.buy .row button {
+  width: 3rem;
+  height: 3rem;
+  margin: 0.2rem;
+}
+.buy .row button:hover {
+  cursor: pointer;
+}
+.buy #green {
+  background-color: green;
+}
+.buy #green:hover {
+  background-color: #01a301;
+}
+.buy #white-bg {
+  background-color: white;
+}
+.buy #white-bg:hover {
+  background-color: #ececec;
+}
+.buy #red {
+  background-color: red;
+}
+.buy #red:hover {
+  background-color: #c42727;
+}
+.buy .buy-black {
+  background: rgba(0, 0, 0, 0.699);
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  padding-top: 3rem;
+}
+.buy .buy-display {
+  width: 50rem;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+.buy .separator {
+  background: white;
+  width: 1px;
+  height: 1rem;
+  margin: 0 0.5rem;
+  color: white;
+}
+.buy .buy-display .left,
+.buy .buy-display .right {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.buy .buy-display .right {
+  padding: 0 2rem;
+}
+.buy .buy-display .right p {
+  padding: 1rem 1rem;
+  font-size: 1rem;
+  background: rgba(0, 0, 0, 0.541);
+  border-radius: 20px;
+}
+.buy .description {
+  width: 120%;
+  display: flex;
+}
+.buy #pink {
+  color: #c8006d;
+}
+.buy #white {
+  color: white;
+  font-size: 1rem;
+}
+.buy .big-line {
+  height: 6rem;
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin-top: 3rem;
+}
+.buy .hour-line {
+  height: 6rem;
+  display: flex;
+  flex-direction: row;
+  margin-top: 3rem;
+}
+.buy .line {
+  height: 50%;
+  display: flex;
+  align-items: center;
+  width: 50%;
+}
+.buy .line select {
+  background: rgba(0, 0, 0, 0);
+  border: 0;
+  border-bottom: 1px solid gray;
+  width: 3rem;
+  height: 2rem;
+  font-size: 1.2rem;
+  color: #c8006d;
+}
+.buy .city-div {
+  width: 50%;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.buy .city-div select {
+  background: rgba(0, 0, 0, 0);
+  border: 0;
+  border-bottom: 1px solid gray;
+  width: 10rem;
+  height: 2rem;
+  font-size: 1.2rem;
+  color: #c8006d;
+}
+.buy .hour {
+  background: rgba(0, 0, 0, 0.5);
+  width: 8rem;
+  height: 4rem;
+  margin-right: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid #c8006d;
+}
+.buy .hour h1 {
+  font-size: 1rem;
+  color: white;
+  margin: 0;
+}
+.buy .hour h2 {
+  font-size: 1.4rem;
+  color: white;
+  margin: 0;
+}
+.buy .hour:hover {
+  background: #c8006d;
+  cursor: pointer;
+}
+.buy .seats {
+  display: flex;
+  width: 100%;
+}
+.buy .seats .left,
+.buy .seats .right {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.buy .right .line h1 {
+  font-size: 1.2rem;
+  color: #c8006d;
+  margin-left: 1rem;
+}
+@media only screen and (max-width: 1100px) {
+  .buy .buy-display h2 {
+    font-size: 2.5rem;
+  }
+  .buy .hour {
+    width: 6rem;
+    height: 3rem;
+    margin: 0.5rem;
+  }
+  .buy .hour h2 {
+    font-size: 1.2rem;
+  }
+  .buy .hour h1 {
+    font-size: 1rem;
+  }
+  .buy .hour-line {
+    margin-top: 0rem;
+    margin-bottom: 4rem;
+  }
+  .buy .hour-line .line {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+  }
+  .buy .seats {
+    width: 60%;
+  }
+  .buy .row button {
+    width: 2rem;
+    height: 2rem;
+    margin: 0 0.1rem;
+  }
+  .buy .right .line select,
+  .buy .right .line h1 {
+    font-size: 1rem;
+  }
+  .buy .city-div {
+    height: 2rem;
+  }
+}
+@media only screen and (max-width: 650px) {
+  .buy .buy-content .one-line h1 {
+    font-size: 1rem;
+  }
+  .buy .buy-display h2 {
+    font-size: 2rem;
+  }
+  .buy .hour {
+    width: 5rem;
+    height: 3rem;
+    margin: 0.5rem;
+  }
+  .buy .hour h2 {
+    font-size: 1rem;
+  }
+  .buy .hour h1 {
+    font-size: 0.8rem;
+  }
+  .buy .hour-line {
+    margin-top: 0rem;
+    margin-bottom: 4rem;
+  }
+  .buy .hour-line .line {
+    display: grid;
+    grid-template-columns: auto auto auto;
+  }
+  .buy .seats {
+    width: 60%;
+  }
+  .buy .seats button {
+    font-size: 1rem;
+    width: 3.5rem;
+  }
+  .buy .row button {
+    height: 1.2rem;
+    width: 1.2rem;
+    margin: 0 0.1rem;
+  }
+  .buy .big-line {
+    width: 50%;
+  }
+  .buy .city-div select {
+    font-size: 1rem;
+  }
+  .buy .calendar {
+    width: 8rem;
+  }
+  .buy .calendar h1 {
+    font-size: 0.8rem;
+  }
+  .buy .right .line select,
+  .buy .right .line h1 {
+    font-size: 1rem;
+  }
+  .buy .city-div {
+    height: 2rem;
+  }
+  .buy .seats {
+    width: 30%;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .buy .buy-display h2 {
+    font-size: 2.5rem;
+  }
+  .buy .hour {
+    width: 6rem;
+    height: 3rem;
+    margin: 0.5rem;
+  }
+  .buy .hour h2 {
+    font-size: 1.2rem;
+  }
+  .buy .hour h1 {
+    font-size: 1rem;
+  }
+  .buy .hour-line {
+    margin-top: 0rem;
+    margin-bottom: 4rem;
+  }
+  .buy .hour-line .line {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+  }
+  .buy .seats {
+    width: 60%;
+  }
+  .buy .row button {
+    width: 2rem;
+    height: 2rem;
+    margin: 0 0.1rem;
+  }
+  .buy .right .line select,
+  .buy .right .line h1 {
+    font-size: 1rem;
+  }
+  .buy .city-div {
+    height: 2rem;
+  }
+}
+@media only screen and (max-width: 650px) {
+  .buy .buy-display h2 {
+    font-size: 1.5rem;
+  }
+  .buy .hour {
+    width: 5rem;
+    height: 3rem;
+    margin: 0.5rem;
+  }
+  .buy .hour h2 {
+    font-size: 1rem;
+  }
+  .buy .hour h1 {
+    font-size: 0.7rem;
+  }
+  .buy .seats {
+    width: 30%;
+  }
+  .buy .seats button {
+    font-size: 1rem;
+    width: 3.5rem;
+  }
+  .buy .big-line {
+    width: 35%;
+  }
+  .buy .hour-line .line {
+    display: grid;
+    grid-template-columns: auto auto auto;
+  }
+  .buy .city-div select {
+    font-size: 1rem;
+  }
+  .buy .calendar {
+    width: 8rem;
+  }
+  .buy .calendar h1 {
+    font-size: 0.7rem;
+  }
+  .buy .row button {
+    height: 1rem;
+    width: 1rem;
+    margin: 0 0.1rem;
+  }
+  .buy .right .line select {
+    font-size: 1rem;
+  }
+  .buy .right .line h1 {
+    margin: 0;
+    font-size: 0.8rem;
+  }
+  .buy .city-div {
+    height: 2rem;
+  }
+  .buy .city-div select {
+    width: 8rem;
+  }
+}

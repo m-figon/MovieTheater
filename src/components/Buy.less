@@ -1,5 +1,16 @@
-
-.buy,
+.buy{
+  width: 100%;
+  height: calc(100vh - 5rem);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  background-size: 100% 100%;
+  h2 {
+    color: #c8006d;
+    font-size: 4rem;
+    margin: 0;
+  }
 .buy-black {
   width: 100%;
   height: calc(100vh - 5rem);
@@ -72,6 +83,9 @@
           cursor: pointer;
         }
     }
+    .left{
+      flex-direction: column;
+    }
 }
 
 .row {
@@ -126,13 +140,6 @@
   height: 1rem;
   margin: 0 0.5rem;
   color: white;
-}
-.buy {
-    h2 {
-        color: #c8006d;
-        font-size: 4rem;
-        margin: 0;
-      }
 }
 .buy-display {
     .left,
@@ -256,248 +263,259 @@
           }
     }
 }
+}
 @media only screen and (max-width: 1100px) {
-  .buy-display {
-    h2{
-        font-size: 2.5rem;
-      }
-  }
-  .hour{
-    width:6rem;
-    height:3rem;
-    margin: 0.5rem;
-    h2{
-        font-size: 1.2rem;
-      }
-      h1{
-        font-size: 1rem;
-      }
-  }
-  .hour-line{
-    margin-top: 0rem;
-    margin-bottom:4rem;
-    .line{
-        display: grid;
-        grid-template-columns: auto auto auto auto;
-      }
-  }
-  .seats{
-    width:60%;
-  }
-  .row {
-    button{
-        width:2rem;
-        height: 2rem;
-        margin: 0 0.1rem;
-      }
-  }
-  .right {
-      .line{
-        select,
+  .buy{
+    .buy-display {
+      h2{
+          font-size: 2.5rem;
+        }
+    }
+    .hour{
+      width:6rem;
+      height:3rem;
+      margin: 0.5rem;
+      h2{
+          font-size: 1.2rem;
+        }
         h1{
           font-size: 1rem;
         }
-      }
-  }
-  .city-div{
-    height:2rem;
-  }
-}
-@media only screen and (max-width: 650px) {
-  .buy-content{
-    .one-line{
-        h1{
+    }
+    .hour-line{
+      margin-top: 0rem;
+      margin-bottom:4rem;
+      .line{
+          display: grid;
+          grid-template-columns: auto auto auto auto;
+        }
+    }
+    .seats{
+      width:60%;
+    }
+    .row {
+      button{
+          width:2rem;
+          height: 2rem;
+          margin: 0 0.1rem;
+        }
+    }
+    .right {
+        .line{
+          select,
+          h1{
             font-size: 1rem;
           }
+        }
+    }
+    .city-div{
+      height:2rem;
     }
   }
-  .buy-display{
-    h2{
-        font-size: 2.0rem;
-      }
-  }
-  .hour{
-    width:5rem;
-    height:3rem;
-    margin: 0.5rem;
-     h2{
-        font-size: 1.0rem;
-      }
-      h1{
-        font-size: 0.8rem;
-      }
   }
   
-  .hour-line{
-    margin-top: 0rem;
-    margin-bottom:4rem;
-    .line{
-        display: grid;
-        grid-template-columns: auto auto auto;
+@media only screen and (max-width: 650px) {
+  .buy{
+    .buy-content{
+      .one-line{
+          h1{
+              font-size: 1rem;
+            }
       }
-  }
-  .seats{
-    width:60%;
-    button{
-        font-size: 1rem;
-        width:3.5rem;
-      }
-  }
-  .row{
-    button{
-        height:1.2rem;
-        width:1.2rem;
-        margin: 0 0.1rem;
-      }
-  }
-  .big-line{
-    width:50%;
-  }
-  .city-div {
-    select{
-        font-size: 1rem;
-      }
-  }
-  .calendar{
-    width:8rem;
-    h1{
-        font-size: 0.8rem;
-      }
-  }
-  .right {
-      .line{
-        select,
+    }
+    .buy-display{
+      h2{
+          font-size: 2.0rem;
+        }
+    }
+    .hour{
+      width:5rem;
+      height:3rem;
+      margin: 0.5rem;
+       h2{
+          font-size: 1.0rem;
+        }
         h1{
+          font-size: 0.8rem;
+        }
+    }
+    
+    .hour-line{
+      margin-top: 0rem;
+      margin-bottom:4rem;
+      .line{
+          display: grid;
+          grid-template-columns: auto auto auto;
+        }
+    }
+    .seats{
+      width:60%;
+      button{
+          font-size: 1rem;
+          width:3.5rem;
+        }
+    }
+    .row{
+      button{
+          height:1.2rem;
+          width:1.2rem;
+          margin: 0 0.1rem;
+        }
+    }
+    .big-line{
+      width:50%;
+    }
+    .city-div {
+      select{
           font-size: 1rem;
         }
-      }
-  }
-  .city-div{
-    height:2rem;
-  }
-  .seats{
-    width:30%;
+    }
+    .calendar{
+      width:8rem;
+      h1{
+          font-size: 0.8rem;
+        }
+    }
+    .right {
+        .line{
+          select,
+          h1{
+            font-size: 1rem;
+          }
+        }
+    }
+    .city-div{
+      height:2rem;
+    }
+    .seats{
+      width:30%;
+    }
   }
   
 }
 @media only screen and (max-width: 450px) {
-  .buy-display{
-    h2{
-        font-size: 2.5rem;
-      }
-  }
-  .hour{
-    width:6rem;
-    height:3rem;
-    margin: 0.5rem;
-    h2{
-        font-size: 1.2rem;
-    }
-    h1{
-        font-size: 1rem;
-    }
-  }
-  .hour-line{
-    margin-top: 0rem;
-    margin-bottom:4rem;
-    .line{
-        display: grid;
-        grid-template-columns: auto auto auto auto;
-      }
-  }
-  
-  .seats{
-    width:60%;
-  }
-  .row{
-    button{
-        width:2rem;
-        height: 2rem;
-        margin: 0 0.1rem;
-      }
-  }
-  .right{
-      .line{
-        select,
-        h1{
-          font-size: 1rem;
+  .buy{
+    .buy-display{
+      h2{
+          font-size: 2.5rem;
         }
+    }
+    .hour{
+      width:6rem;
+      height:3rem;
+      margin: 0.5rem;
+      h2{
+          font-size: 1.2rem;
       }
-  }
-  .city-div{
-    height:2rem;
+      h1{
+          font-size: 1rem;
+      }
+    }
+    .hour-line{
+      margin-top: 0rem;
+      margin-bottom:4rem;
+      .line{
+          display: grid;
+          grid-template-columns: auto auto auto auto;
+        }
+    }
+    
+    .seats{
+      width:60%;
+    }
+    .row{
+      button{
+          width:2rem;
+          height: 2rem;
+          margin: 0 0.1rem;
+        }
+    }
+    .right{
+        .line{
+          select,
+          h1{
+            font-size: 1rem;
+          }
+        }
+    }
+    .city-div{
+      height:2rem;
+    }
   }
 }
 @media only screen and (max-width: 650px) {
 
-  .buy-display{
-    h2{
-        font-size: 1.5rem;
-      }
-  }
-  .hour{
-    width:5rem;
-    height:3rem;
-    margin: 0.5rem;
-    h2{
-        font-size: 1rem;
-      }
-      h1{
-        font-size: 0.7rem;
-      }
-  }
-  .seats{
-    width:30%;
-    button{
-        font-size: 1rem;
-        width:3.5rem;
-      }
-  }
-  .big-line{
-    width:35%;
-  }
-  .hour-line{
-    .line{
-        display: grid;
-        grid-template-columns: auto auto auto;
-      }
-  }
-  .city-div{
-    select{
-        font-size: 1rem;
-      }
-  }
-  
-  .calendar{
-    width:8rem;
-    h1{
-        font-size: 0.7rem;
+  .buy{
+    .buy-display{
+      h2{
+          font-size: 1.5rem;
+        }
     }
-  }
-  .row {
-    button{
-        height:1.0rem;
-        width:1.0rem;
-        margin: 0 0.1rem;
-      }
-  }
-  .right{
+    .hour{
+      width:5rem;
+      height:3rem;
+      margin: 0.5rem;
+      h2{
+          font-size: 1rem;
+        }
+        h1{
+          font-size: 0.7rem;
+        }
+    }
+    .seats{
+      width:30%;
+      button{
+          font-size: 1rem;
+          width:3.5rem;
+        }
+    }
+    .big-line{
+      width:35%;
+    }
+    .hour-line{
       .line{
-          select{
-            font-size: 1rem;
-
-          }
-          h1{
-            margin:0;
-            font-size: 0.8rem;
-          }
+          display: grid;
+          grid-template-columns: auto auto auto;
+        }
+    }
+    .city-div{
+      select{
+          font-size: 1rem;
+        }
+    }
+    
+    .calendar{
+      width:8rem;
+      h1{
+          font-size: 0.7rem;
       }
-  }
-  .city-div{
-    height:2rem;
-    select{
-        width:8rem;
-      }
+    }
+    .row {
+      button{
+          height:1.0rem;
+          width:1.0rem;
+          margin: 0 0.1rem;
+        }
+    }
+    .right{
+        .line{
+            select{
+              font-size: 1rem;
+  
+            }
+            h1{
+              margin:0;
+              font-size: 0.8rem;
+            }
+        }
+    }
+    .city-div{
+      height:2rem;
+      select{
+          width:8rem;
+        }
+    }
+    
   }
   
 }

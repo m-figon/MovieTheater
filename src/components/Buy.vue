@@ -47,7 +47,7 @@
                     <button v-on:click="chooseGreen(index,key)" id="green"></button>
                   </div>
                   <div v-if="seat==='-'">
-                    <button v-on:click="chooseWhite(index,key)" id="white-bg"></button>
+                    <button v-on:click="chooseWhite(index,key)" id="white"></button>
                   </div>
                   <div v-if="seat==='1'">
                     <button v-on:click="chooseRed()" id="red"></button>
@@ -461,6 +461,7 @@ export default {
 };
 </script>
 
-<style scoped src="../style.css">
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped src="./Buy.css">
 
 </style>
