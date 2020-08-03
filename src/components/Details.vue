@@ -10,11 +10,11 @@
           <h2>{{film.title.toUpperCase()}}</h2>
           <div class="big-line">
             <div class="line">
-              <h1 id="gray">{{film.type}}</h1>
+              <h1 id="white">{{film.type}}</h1>
               <div class="separator"></div>
-              <h1 id="gray">Above {{film.age}}</h1>
+              <h1 id="white">Above {{film.age}}</h1>
               <div class="separator"></div>
-              <h1 id="gray">{{film.duration}}</h1>
+              <h1 id="white">{{film.duration}}</h1>
             </div>
             <div class="city-div">
               <select v-model="city">
@@ -171,7 +171,7 @@ export default {
 #pink {
   color: #c8006d;
 }
-#gray {
+#white {
   color: white;
   font-size: 1rem;
 }
@@ -233,5 +233,124 @@ export default {
 .hour:hover {
   background: #c8006d;
   cursor: pointer;
+}
+@media only screen and (max-width: 1100px) {
+  .details h2{
+    font-size: 3rem;
+  }
+  .description{
+    width:80%;
+  }
+  .hour{
+    width:6rem;
+  }
+  .hour h2{
+    font-size: 1.5rem;
+  }
+  .details-display .right p{
+    width:40rem;
+  }
+}
+@media only screen and (max-width: 800px) {
+  .details h2{
+    font-size: 2rem;
+  }
+  .description{
+    width:60%;
+  }
+  #white{
+    font-size: 0.8rem;
+  }
+  .city-div{
+    height:2rem;
+  }
+  .big-line{
+    width:60%;
+  }
+  .city-div select{
+    font-size: 1rem;
+  }
+  .details-display .right p{
+    font-size: 0.8rem;
+    margin-left: 1rem;
+    padding: 1rem;
+    width:30rem;
+
+  }
+  .hour{
+    width:5rem;
+    margin-right: 0.5rem;
+  }
+  .hour h2{
+    font-size: 1.2rem;
+  }
+  .hour h1{
+    font-size: 0.8rem;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .details h2{
+    font-size: 1.5rem;
+  }
+  .description{
+    width:60%;
+    flex-direction: column;
+  }
+  #white{
+    font-size: 0.7rem;
+  }
+  .big-line{
+    width:50%;
+  }
+  .city-div select{
+    font-size: 1rem;
+  }
+  .details-display .right p{
+    font-size: 0.7rem;
+    padding: 1rem;
+    width:auto;
+
+
+  }
+  .description{
+    width:50%;
+  }
+  .details-display .left,
+  .details-display .right{
+    width:100%;
+    padding:0;
+  }
+  .details-display .right{
+    margin-top: 1rem;
+  }
+  .hour-line{
+    margin-top: 0;
+  }
+  .hour-line .line{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+  }
+  .hour{
+    width:5rem;
+    margin-right: 0.5rem;
+  }
+  .hour h2{
+    font-size: 1.2rem;
+  }
+  .hour h1{
+    font-size: 0.8rem;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .description,.big-line{
+    width:40%;
+  }
+  .separator{
+    margin: 0 0.2rem;
+  }
+  .hour-line .line{
+    display: grid;
+    grid-template-columns: auto auto auto;
+  }
 }
 </style>

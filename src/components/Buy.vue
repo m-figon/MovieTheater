@@ -474,7 +474,6 @@ export default {
   background-size: 100% 100%;
 }
 .details-content {
-  width: 30%;
   height: 70%;
   display: flex;
   justify-content: center;
@@ -714,5 +713,220 @@ export default {
   font-size: 1.2rem;
   color: #c8006d;
   margin-left: 1rem;
+}
+@media only screen and (max-width: 1100px) {
+  .details-display h2{
+    font-size: 2.5rem;
+  }
+  .hour{
+    width:6rem;
+    height:3rem;
+    margin: 0.5rem;
+  }
+  .hour h2{
+    font-size: 1.2rem;
+  }
+  .hour h1{
+    font-size: 1rem;
+  }
+  .hour-line{
+    margin-top: 0rem;
+    margin-bottom:4rem;
+  }
+  .hour-line .line{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+  }
+  .seats{
+    width:60%;
+  }
+  .row button{
+    width:2rem;
+    height: 2rem;
+    margin: 0 0.1rem;
+  }
+  .right .line select,
+  .right .line h1{
+    font-size: 1rem;
+  }
+  .city-div{
+    height:2rem;
+  }
+}
+@media only screen and (max-width: 650px) {
+  .details-content .one-line h1{
+    font-size: 1rem;
+  }
+  .details-display h2{
+    font-size: 2.0rem;
+  }
+  .hour{
+    width:5rem;
+    height:3rem;
+    margin: 0.5rem;
+  }
+  .hour h2{
+    font-size: 1.0rem;
+  }
+  .hour h1{
+    font-size: 0.8rem;
+  }
+  .hour-line{
+    margin-top: 0rem;
+    margin-bottom:4rem;
+  }
+  .hour-line .line{
+    display: grid;
+    grid-template-columns: auto auto auto;
+  }
+  .seats{
+    width:60%;
+  }
+  .row button{
+    width:2rem;
+    height: 2rem;
+    margin: 0 0.1rem;
+  }
+  .big-line{
+    width:50%;
+  }
+  .city-div select{
+    font-size: 1rem;
+  }
+  .calendar{
+    width:8rem;
+  }
+  .seats button{
+    font-size: 1rem;
+    width:3.5rem;
+  }
+  .row button{
+    height:1.2rem;
+    width:1.2rem;
+  }
+  .calendar h1{
+    font-size: 0.8rem;
+  }
+  .right .line select,
+  .right .line h1{
+    font-size: 1rem;
+  }
+  .city-div{
+    height:2rem;
+  }
+  .seats{
+    width:30%;
+  }
+  
+}
+@media only screen and (max-width: 450px) {
+  .details-display h2{
+    font-size: 2.5rem;
+  }
+  .hour{
+    width:6rem;
+    height:3rem;
+    margin: 0.5rem;
+  }
+  .hour h2{
+    font-size: 1.2rem;
+  }
+  .hour h1{
+    font-size: 1rem;
+  }
+  .hour-line{
+    margin-top: 0rem;
+    margin-bottom:4rem;
+  }
+  .hour-line .line{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+  }
+  .seats{
+    width:60%;
+  }
+  .row button{
+    width:2rem;
+    height: 2rem;
+    margin: 0 0.1rem;
+  }
+  .right .line select,
+  .right .line h1{
+    font-size: 1rem;
+  }
+  .city-div{
+    height:2rem;
+  }
+}
+@media only screen and (max-width: 650px) {
+
+  .details-display h2{
+    font-size: 1.5rem;
+  }
+  .hour{
+    width:5rem;
+    height:3rem;
+    margin: 0.5rem;
+  }
+  .hour h2{
+    font-size: 1rem;
+  }
+  .hour h1{
+    font-size: 0.7rem;
+  }
+
+  .seats{
+    width:50%;
+  }
+  .row button{
+    width:2rem;
+    height: 2rem;
+    margin: 0 0.1rem;
+  }
+  .big-line{
+    width:35%;
+  }
+  .hour-line .line{
+    display: grid;
+    grid-template-columns: auto auto auto;
+  }
+  .city-div select{
+    font-size: 1rem;
+  }
+  
+  .calendar{
+    width:8rem;
+  }
+  .calendar h1{
+    font-size: 0.7rem;
+  }
+  .seats button{
+    font-size: 1rem;
+    width:3.5rem;
+  }
+  .row button{
+    height:1.0rem;
+    width:1.0rem;
+  }
+  .calendar h1{
+    font-size: 0.8rem;
+  }
+  .right .line select,
+  .right .line h1{
+    font-size: 1rem;
+  }
+  .right .line h1{
+    margin:0;
+    font-size: 0.8rem;
+  }
+  .city-div{
+    height:2rem;
+  }
+  .city-div select{
+    width:8rem;
+  }
+  .seats{
+    width:30%;
+  }
 }
 </style>

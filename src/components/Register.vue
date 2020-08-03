@@ -1,7 +1,7 @@
 <template>
-  <div class="login">
-    <div class="login-form">
-      <div class="login-form-content">
+  <div class="register">
+    <div class="register-form">
+      <div class="register-form-content">
         <div class="x-button">
           <button v-on:click="quit()">X</button>
         </div>
@@ -186,7 +186,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.login {
+.register {
   position: absolute;
   top: 0;
   left: 0;
@@ -198,7 +198,7 @@ export default {
   background: rgba(0, 0, 0, 0.5);
   z-index: 5;
 }
-.login-form {
+.register-form {
   border-radius: 30px;
   width: 30rem;
   height: auto;
@@ -209,17 +209,17 @@ export default {
   justify-content: center;
   border: 1px solid white;
 }
-.login-form-content {
+.register-form-content {
   width: 70%;
   height: 80%;
   display: flex;
   flex-direction: column;
 }
-.login-form-content p {
+.register-form-content p {
   margin: 0;
   font-size: 1rem;
 }
-.login-form-content input {
+.register-form-content input {
   background: rgba(0, 0, 0, 0);
   border: 0;
   border-bottom: 1px solid gray;
@@ -229,7 +229,7 @@ export default {
   color: #c8006d;
   margin: 1rem 0;
 }
-.login-form-content button {
+.register-form-content button {
   background: #c8006e71;
   background: #c8006d;
   border-radius: 10px;
@@ -240,7 +240,7 @@ export default {
   color: white;
   margin: 1rem 0;
 }
-.login-form-content button:hover {
+.register-form-content button:hover {
   background: #c8006e71;
   cursor: pointer;
 }
@@ -251,5 +251,23 @@ export default {
 }
 .x-button button {
   width: 2rem;
+}
+@media only screen and (max-width: 700px) {
+  .register-form{
+    width:17rem;
+  }
+  
+  .register-form-content input{
+    font-size: 1rem;
+  }
+  .register-form-content button{
+    font-size: 0.8rem;
+    width:4rem;
+  }
+  .x-button button{
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 0.7rem;
+  }
 }
 </style>

@@ -111,7 +111,7 @@ export default {
 }
 .login-form {
   border-radius: 30px;
-  width: 30rem;
+  width: 25rem;
   height: auto;
   background: url("../assets/bg.jpg");
   background-size: 100% 100%;
@@ -162,5 +162,23 @@ export default {
 }
 .x-button button {
   width: 2rem;
+}
+@media only screen and (max-width: 650px) {
+  .login-form{
+    width:17rem;
+  }
+  
+  .login-form-content input{
+    font-size: 1rem;
+  }
+  .login-form-content button{
+    font-size: 0.8rem;
+    width: 3rem;
+  }
+  .x-button button{
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 0.7rem;
+  }
 }
 </style>

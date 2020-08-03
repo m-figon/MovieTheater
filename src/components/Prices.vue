@@ -65,7 +65,8 @@ export default {
 }
 .prices-display h2{
   margin:0;
-  font-size: 3rem;
+  font-size: 2.0rem;
+  text-transform: uppercase;
   width:100%;
   display: flex;
   justify-content: center;
@@ -75,10 +76,11 @@ export default {
   color:#c8006d;
 }
 .row h2{
-  font-size: 2rem;
+  font-size: 1.5rem;
   width: auto;
   height: auto;
-  background: black;
+  background: none;
+  color:gray;
   border-bottom: 1px solid gray;
 }
 ul{
@@ -94,5 +96,40 @@ li{
   height: 100%;
   align-items: center;
   flex-direction: column;
+}
+@media only screen and (max-width: 700px) {
+  .prices-display {
+  width: 20rem;
+  height: 30rem;
+}
+.row {
+  flex-direction: column;
+}
+.row .left,
+.row .right {
+  margin-top: 1rem;
+  width: 100%;
+  height:20rem;
+}
+}
+@media only screen and (max-width: 450px) {
+  .prices-display {
+  width: 13rem;
+  height: 20rem;
+}
+.prices-display h2{
+  font-size: 1.5rem;
+}
+.row .left,
+.row .right {
+  margin-top: 0rem;
+
+}
+.row h2{
+  font-size: 1.0rem;
+}
+li{
+  font-size: 1.0rem;
+}
 }
 </style>
