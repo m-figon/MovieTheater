@@ -41,8 +41,9 @@
 .details .details-display .right {
   width: 50%;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  flex-direction: row;
 }
 .details .details-display .right {
   padding: 0 2rem;
@@ -100,15 +101,48 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: row;
 }
 .details .city-div select {
   background: rgba(0, 0, 0, 0);
   border: 0;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid #a3a3a3;
   width: 10rem;
   height: 2rem;
   font-size: 1.2rem;
   color: #c8006d;
+}
+.details .calendar {
+  background: black;
+  border: 1px solid #c8006d;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  height: 2rem;
+  width: 12rem;
+  margin-left: 2rem;
+}
+.details .calendar h1 {
+  font-size: 1rem;
+}
+.details #left-arrow,
+.details #right-arrow {
+  width: 1rem;
+  height: 1rem;
+  background: #c8006d;
+  border: 0;
+  clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
+  margin-right: 0.5rem;
+}
+.details #right-arrow {
+  clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
+}
+.details #left-arrow:hover,
+.details #right-arrow:hover {
+  background: #ffffff;
+  cursor: pointer;
 }
 .details .hour {
   background: rgba(0, 0, 0, 0.5);
@@ -118,6 +152,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: row;
   flex-direction: column;
   border: 1px solid #c8006d;
 }
@@ -146,6 +181,13 @@
   }
   .details .hour h2 {
     font-size: 1.5rem;
+  }
+  .details .calendar {
+    width: 7rem;
+    margin-left: 0;
+  }
+  .details .calendar h1 {
+    font-size: 0.7rem;
   }
   .details .details-display .right p {
     width: 40rem;

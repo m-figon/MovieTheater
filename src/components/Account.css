@@ -5,10 +5,11 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  display: flex;
-  align-items: center;
   background: rgba(0, 0, 0, 0.5);
+  display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: row;
   z-index: 5;
 }
 .login-form,
@@ -19,8 +20,9 @@
   background: url("../assets/bg.jpg");
   background-size: 100% 100%;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  flex-direction: row;
   border: 1px solid white;
 }
 .register-form {
@@ -42,7 +44,7 @@
 .register-form-content input {
   background: rgba(0, 0, 0, 0);
   border: 0;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid #a3a3a3;
   width: 100%;
   height: 2rem;
   font-size: 1.2rem;
@@ -51,10 +53,9 @@
 }
 .login-form-content button,
 .register-form-content button {
-  background: #c8006e71;
   background: #c8006d;
   border-radius: 10px;
-  border: 1px solid gray;
+  border: 1px solid #a3a3a3;
   width: 4rem;
   height: 2rem;
   font-size: 1.2rem;
@@ -63,7 +64,7 @@
 }
 .login-form-content button:hover,
 .register-form-content button:hover {
-  background: #c8006e71;
+  background: #fb0089;
   cursor: pointer;
 }
 .register-form-content button {

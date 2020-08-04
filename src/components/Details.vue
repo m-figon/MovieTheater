@@ -22,6 +22,11 @@
                 <option v-for="city in cities" v-bind:value="city">{{city}}</option>
               </select>
             </div>
+            <div class="calendar">
+              <button v-on:click="subtractDay()" id="left-arrow"></button>
+              <h1>{{date}}</h1>
+              <button v-on:click="addDay()" id="right-arrow"></button>
+            </div>
           </div>
           <div class="description">
             <div class="left">
@@ -54,15 +59,19 @@
 </template>
 
 <script>
+import moment from "moment";
+
 export default {
   data() {
     return {
       film: null,
       cities: [],
       city: "City",
+      date: null,
     };
   },
   created() {
+    this.date = moment().format("ll");
     fetch("https://rocky-citadel-32862.herokuapp.com/MovieTheater/films")
       .then((response) => response.json())
       .then((data) => {
@@ -100,11 +109,18 @@ export default {
     myTrim(x) {
       return x.replace(/\s/g, "-");
     },
+    addDay() {
+      this.date = moment(this.date, "ll").add(1, "d");
+      this.date = moment(this.date).format("ll");
+    },
+    subtractDay() {
+      this.date = moment(this.date, "ll").subtract(1, "d");
+      this.date = moment(this.date).format("ll");
+    },
   },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped src="./Details.css">
-
 </style>

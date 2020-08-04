@@ -1,31 +1,17 @@
+@import '../global.less';
 .buy{
-  width: 100%;
-  height: calc(100vh - 5rem);
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-direction: column;
-  background-size: 100% 100%;
+  .big-div();
   h2 {
-    color: #c8006d;
+    color: @main-color;
     font-size: 4rem;
     margin: 0;
   }
 .buy-black {
-  width: 100%;
-  height: calc(100vh - 5rem);
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-direction: column;
-  background-size: 100% 100%;
+  .big-div();
 }
 .buy-content {
   height: 70%;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-direction: column;
+  .flex(center,flex-start,column);
   h1 {
     font-size: 1.2rem;
   }
@@ -33,18 +19,16 @@
 .one-line {
   display: flex;
   #pink {
-    color: #c8006d;
+    color: @main-color;
     margin-left: 1rem;
     cursor: pointer;
   }
 }
 .calendar {
   background: black;
-  border: 1px solid #c8006d;
+  border: 1px solid @main-color;
   border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  .flex();
   height: 2rem;
   width: 9rem;
     h1 {
@@ -55,7 +39,7 @@
 #right-arrow{
     width: 1rem;
   height: 1rem;
-  background: #c8006d;
+  background: @main-color;
   border: 0;
   margin-right: 0.5rem;
   &:hover {
@@ -71,9 +55,9 @@
 }
 .seats {
     button {
-        background: #c8006d;
+        background: @main-color;
         border-radius: 10px;
-        border: 1px solid gray;
+        border: 1px solid @gray;
         width: 4rem;
         height: 2rem;
         font-size: 1.2rem;
@@ -101,22 +85,14 @@
   }
 
 #green {
-  background-color: green;
-  &:hover {
-    background-color: rgb(1, 163, 1);
-  }
+  .color-hover(green);
 }
 #white-bg {
-  background-color: white;
-  &:hover {
-    background-color: rgb(236, 236, 236);
-  }
+  .color-hover(rgb(224, 224, 224));
 }
 #red {
-  background-color: red;
-  &:hover {
-    background-color: rgb(196, 39, 39);
-  }
+  .color-hover(red);
+
 }
 .buy-black {
   background: rgba(0, 0, 0, 0.699);
@@ -130,9 +106,7 @@
   width: 50rem;
   height: 100%;
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-direction: column;
+  .flex(flex-start,center,column);
 }
 .separator {
   background: white;
@@ -145,9 +119,7 @@
     .left,
     .right {
         width: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        .flex();
     }
 }
 .buy-display {
@@ -166,7 +138,7 @@
   display: flex;
 }
 #pink {
-  color: #c8006d;
+  color: @main-color;
 }
 #white {
   color: white;
@@ -193,27 +165,25 @@
     select {
         background: rgba(0, 0, 0, 0);
         border: 0;
-        border-bottom: 1px solid gray;
+        border-bottom: 1px solid @gray;
         width: 3rem;
         height: 2rem;
         font-size: 1.2rem;
-        color: #c8006d;
+        color: @main-color;
     }
 }
 .city-div {
   width: 50%;
   height: 4rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  .flex();
   select {
     background: rgba(0, 0, 0, 0);
     border: 0;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid @gray;
     width: 10rem;
     height: 2rem;
     font-size: 1.2rem;
-    color: #c8006d;
+    color: @main-color;
   }
 }
 .hour {
@@ -221,11 +191,9 @@
   width: 8rem;
   height: 4rem;
   margin-right: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  .flex();
   flex-direction: column;
-  border: 1px solid #c8006d;
+  border: 1px solid @main-color;
   h1 {
     font-size: 1rem;
     color: white;
@@ -237,7 +205,7 @@
     margin: 0;
   }
   &:hover {
-    background: #c8006d;
+    background: @main-color;
     cursor: pointer;
   }
 }
@@ -248,9 +216,7 @@
   .left,
   .right {
     width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    .flex();
     flex-direction: column;
   }
 }
@@ -258,7 +224,7 @@
     .line{
         h1 {
             font-size: 1.2rem;
-            color: #c8006d;
+            color: @main-color;
             margin-left: 1rem;
           }
     }

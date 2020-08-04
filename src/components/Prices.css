@@ -29,6 +29,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: row;
   height: 5rem;
   color: #c8006d;
 }
@@ -43,8 +44,8 @@
   width: auto;
   height: auto;
   background: none;
-  color: gray;
-  border-bottom: 1px solid gray;
+  color: #a3a3a3;
+  border-bottom: 1px solid #a3a3a3;
 }
 ul {
   list-style-image: url("./film.png");

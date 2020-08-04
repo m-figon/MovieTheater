@@ -1,24 +1,14 @@
+@import '../global.less';
+
 .details{
-  width: 100%;
-  height: calc(100vh - 5rem);
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-direction: column;
-  background-size: 100% 100%;
+  .big-div();
   h2 {
-    color: #c8006d;
+    color: @main-color;
     font-size: 4rem;
     margin: 0;
   }
 .details-black {
-  width: 100%;
-  height: calc(100vh - 5rem);
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-direction: column;
-  background-size: 100% 100%;
+  .big-div();
 }
 .details-black {
   background: rgba(0, 0, 0, 0.699);
@@ -31,16 +21,11 @@
 .details-display {
   width: 50rem;
   height: 100%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-direction: column;
+  .flex(flex-start,center,column);
   .left,
   .right {
   width: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  .flex();
 }
 .right {
   padding: 0 2rem;
@@ -69,7 +54,7 @@
   display: flex;
 }
 #pink {
-  color: #c8006d;
+  color: @main-color;
 }
 #white {
   color: white;
@@ -97,30 +82,53 @@
 .city-div {
   width: 50%;
   height: 4rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  .flex();
   select {
     background: rgba(0, 0, 0, 0);
     border: 0;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid @gray;
     width: 10rem;
     height: 2rem;
     font-size: 1.2rem;
-    color: #c8006d;
+    color: @main-color;
   }
 }
-
+.calendar {
+  background: black;
+  border: 1px solid @main-color;
+  border-radius: 10px;
+  .flex();
+  height: 2rem;
+  width: 12rem;
+  margin-left: 2rem;
+  h1 {
+      font-size: 1rem;
+    }
+}
+#left-arrow, #right-arrow {
+  width: 1rem;
+  height: 1rem;
+  background: @main-color;
+  border: 0;
+  clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
+  margin-right: 0.5rem;
+}
+#right-arrow {
+  clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
+}
+#left-arrow:hover,
+#right-arrow:hover {
+  background: #ffffff;
+  cursor: pointer;
+}
 .hour {
   background: rgba(0, 0, 0, 0.5);
   width: 8rem;
   height: 4rem;
   margin-right: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  .flex();
   flex-direction: column;
-  border: 1px solid #c8006d;
+  border: 1px solid @main-color;
   h1 {
     font-size: 1rem;
     margin: 0;
@@ -131,7 +139,7 @@
     margin: 0;
   }
   &:hover {
-    background: #c8006d;
+    background: @main-color;
     cursor: pointer;
   }
 }
@@ -149,7 +157,13 @@
         font-size: 1.5rem;
       }
   }
-  
+  .calendar{
+    width:7rem;
+    margin-left: 0;
+  h1 {
+      font-size: 0.7rem;
+    }
+  }
   .details-display {
     .right{
         p{
@@ -253,7 +267,6 @@
         font-size: 0.8rem;
       }
   }
-  
 }
 @media only screen and (max-width: 450px) {
   .description,.big-line{

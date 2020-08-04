@@ -1,12 +1,12 @@
-a {
+@import '../global.less';
+
+.orders{
+  a {
     text-decoration: none;
-    color: #c8006d;
+    color: @main-color;
   }
-  .orders {
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    .flex();
     flex-direction: column;
     color: white;
     h1 {
@@ -14,18 +14,16 @@ a {
       }
       h2 {
         font-size: 1.7rem;
-      }
-  }
-  
-  .orders-films {
+      }  
+  .films {
     width: 30%;
     display: flex;
     flex-direction: column;
   }
-  .orders-film {
+  .film {
     height: 24rem;
     width: 100%;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid @gray;
     display: flex;
     h1 {
         font-size: 1rem;
@@ -47,20 +45,15 @@ a {
   #seat {
     margin: 0 0.3rem;
   }
-  .orders-left {
+  .left {
     width: 40%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    .flex();
   }
-  .orders-middle {
+  .middle {
     width: 60%;
     height: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-direction: column;
+    .flex(flex-start,flex-start,column);
     margin: 0 3%;
   }
   .big-line {
@@ -80,13 +73,10 @@ a {
     align-items: center;
     width: 100%;
   }
-  .orders-right {
+  .right {
     width: 10%;
     height: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-direction: column;
+    .flex(flex-start,flex-start,column);
   }
   .left img {
     width: 10rem;
@@ -96,11 +86,98 @@ a {
     box-shadow: 0px 0px 29px -23px rgba(255, 255, 255, 1);
   }
   #pink {
-    color: #c8006d;
+    color: @main-color;
   }
   #centered {
     justify-content: center;
   }
   #gray {
-    color: gray;
+    color: @gray;
   }
+}
+@media only screen and (max-width: 1650px) {
+  .orders{
+    h2{
+      font-size: 1.5rem;
+    }
+    .films{
+      width:40%;
+    }
+  }
+  
+}
+@media only screen and (max-width: 1250px) {
+  .orders{
+    .films{
+      width:50%;
+    }
+  }
+  
+}
+@media only screen and (max-width: 1250px) {
+  .orders{
+    .films{
+      width:60%;
+    }
+  }
+  
+}
+@media only screen and (max-width: 1000px) {
+  .orders{
+    .films{
+      width:70%;
+    }
+  }
+  
+}
+@media only screen and (max-width: 700px) {
+  .orders{
+    .films{
+      width:80%;
+    }
+  }
+  
+}
+@media only screen and (max-width: 600px) {
+  .orders{
+    h2{
+      font-size: 1.4rem;
+    }
+    .left img{
+      width:8rem;
+      height:12rem;
+    }
+    .film{
+      height:20rem;
+      h2{
+        font-size: 1.2rem;
+      }
+      h1{
+        font-size: 0.8rem;
+      }
+    }
+    .films{
+      width:90%;
+    }
+  }
+  
+}
+@media only screen and (max-width: 450px) {
+  .orders{
+    h2{
+      font-size: 1.2rem;
+    }
+    .films{
+      width:100%;
+    }
+    .film{
+      h2{
+        font-size: 1.0rem;
+      }
+      h1{
+        font-size: 0.7rem;
+      }
+    }
+  }
+  
+}

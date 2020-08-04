@@ -1,8 +1,8 @@
+@import '../global.less';
+
 .repertoire {
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    .flex();
     flex-direction: column;
     h1,
     h2 {
@@ -10,7 +10,7 @@
       }
     a {
         text-decoration: none;
-        color: #c8006d;
+        color: @main-color;
       }
      
       .city-div {
@@ -26,7 +26,7 @@
             width: 10rem;
             height: 2rem;
             font-size: 1.2rem;
-            color: #c8006d;
+            color: @main-color;
           }
       }
       
@@ -65,11 +65,9 @@
       }
       .calendar {
         background: black;
-        border: 1px solid #c8006d;
+        border: 1px solid @main-color;
         border-radius: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        .flex();
         height: 2rem;
         width: 9rem;
         margin-left: 2rem;
@@ -80,7 +78,7 @@
       #left-arrow, #right-arrow {
         width: 1rem;
         height: 1rem;
-        background: #c8006d;
+        background: @main-color;
         border: 0;
         clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
         margin-right: 0.5rem;
@@ -101,7 +99,7 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        border: 1px solid #c8006d;
+        border: 1px solid @main-color;
         h1 {
             font-size: 1rem;
           }
@@ -110,23 +108,18 @@
             margin-top: 0;
         }
         &:hover {
-            background: #c8006d;
+            background: @main-color;
             cursor: pointer;
           }
       }
      
       .left {
         width: 20%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        .flex();
       }
       .middle {
         width: 60%;
-        display: flex;
-        justify-content: flex-start;
-        align-items: flex-start;
-        flex-direction: column;
+        .flex(flex-start,flex-start,column);
         margin: 0 3%;
       }
       .big-line {
@@ -157,10 +150,7 @@
       .right {
         width: 20%;
         height: 100%;
-        display: flex;
-        justify-content: flex-start;
-        align-items: flex-start;
-        flex-direction: column;
+        .flex(flex-start,flex-start,column);
       }
       .left {
         img {
@@ -172,7 +162,7 @@
           }
       }
       #pink {
-        color: #c8006d;
+        color: @main-color;
       }
       #centered {
         justify-content: center;

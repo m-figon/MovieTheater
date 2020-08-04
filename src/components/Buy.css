@@ -46,6 +46,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: row;
   height: 2rem;
   width: 9rem;
 }
@@ -74,7 +75,7 @@
 .buy .seats button {
   background: #c8006d;
   border-radius: 10px;
-  border: 1px solid gray;
+  border: 1px solid #a3a3a3;
   width: 4rem;
   height: 2rem;
   font-size: 1.2rem;
@@ -102,19 +103,19 @@
   background-color: green;
 }
 .buy #green:hover {
-  background-color: #01a301;
+  background-color: #00b300;
 }
 .buy #white-bg {
-  background-color: white;
+  background-color: #e0e0e0;
 }
 .buy #white-bg:hover {
-  background-color: #ececec;
+  background-color: #fafafa;
 }
 .buy #red {
   background-color: red;
 }
 .buy #red:hover {
-  background-color: #c42727;
+  background-color: #ff3333;
 }
 .buy .buy-black {
   background: rgba(0, 0, 0, 0.699);
@@ -143,8 +144,9 @@
 .buy .buy-display .right {
   width: 50%;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  flex-direction: row;
 }
 .buy .buy-display .right {
   padding: 0 2rem;
@@ -188,7 +190,7 @@
 .buy .line select {
   background: rgba(0, 0, 0, 0);
   border: 0;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid #a3a3a3;
   width: 3rem;
   height: 2rem;
   font-size: 1.2rem;
@@ -200,11 +202,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: row;
 }
 .buy .city-div select {
   background: rgba(0, 0, 0, 0);
   border: 0;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid #a3a3a3;
   width: 10rem;
   height: 2rem;
   font-size: 1.2rem;
@@ -218,6 +221,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: row;
   flex-direction: column;
   border: 1px solid #c8006d;
 }
@@ -245,6 +249,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: row;
   flex-direction: column;
 }
 .buy .right .line h1 {

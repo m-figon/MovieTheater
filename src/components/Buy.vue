@@ -47,7 +47,7 @@
                     <button v-on:click="chooseGreen(index,key)" id="green"></button>
                   </div>
                   <div v-if="seat==='-'">
-                    <button v-on:click="chooseWhite(index,key)" id="white"></button>
+                    <button v-on:click="chooseWhite(index,key)" id="white-bg"></button>
                   </div>
                   <div v-if="seat==='1'">
                     <button v-on:click="chooseRed()" id="red"></button>
