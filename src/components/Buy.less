@@ -24,36 +24,7 @@
     cursor: pointer;
   }
 }
-.calendar {
-  background: black;
-  border: 1px solid @main-color;
-  border-radius: 10px;
-  .flex();
-  height: 2rem;
-  width: 9rem;
-    h1 {
-        font-size: 1rem;
-    }
-}
-#left-arrow,
-#right-arrow{
-    width: 1rem;
-  height: 1rem;
-  background: @main-color;
-  border: 0;
-  margin-right: 0.5rem;
-  &:hover {
-    background: #ffffff;
-    cursor: pointer;
-  }
-}
-#left-arrow {
-  clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
-}
-#right-arrow {
-  clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
-}
-.seats {
+  .seats {
     button {
         background: @main-color;
         border-radius: 10px;
@@ -71,7 +42,6 @@
       flex-direction: column;
     }
 }
-
 .row {
     display: flex;
     button {
@@ -100,7 +70,6 @@
   top: 0;
   left: 0;
   z-index: 3;
-  padding-top: 3rem;
 }
 .buy-display {
   width: 50rem;
@@ -191,9 +160,6 @@
   width: 8rem;
   height: 4rem;
   margin-right: 1rem;
-  .flex();
-  flex-direction: column;
-  border: 1px solid @main-color;
   h1 {
     font-size: 1rem;
     color: white;
@@ -203,10 +169,6 @@
     font-size: 1.4rem;
     color: white;
     margin: 0;
-  }
-  &:hover {
-    background: @main-color;
-    cursor: pointer;
   }
 }
 
@@ -230,6 +192,20 @@
     }
 }
 }
+@media only screen and (max-width: 1500px) {
+  .buy{
+    .hour-line,
+    .big-line{
+      margin-top: 1rem;
+    }
+    height:auto;
+    .buy-black{
+      height: auto;
+    }
+  }
+  
+
+}
 @media only screen and (max-width: 1100px) {
   .buy{
     .buy-display {
@@ -247,6 +223,17 @@
         h1{
           font-size: 1rem;
         }
+        &:hover {
+          background: @main-color;
+          cursor: pointer;
+        }
+    }
+    .hour {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      border: 1px solid @main-color;
     }
     .hour-line{
       margin-top: 0rem;

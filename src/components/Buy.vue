@@ -258,9 +258,9 @@ export default {
       if (index > str.length - 1) return str;
       return str.substr(0, index) + chr + str.substr(index + 1);
     },
-    chooseGreen(id1, id2) {
+    chooseFunc(char,id1,id2){
       let tmp = this.rows.slice();
-      tmp[id1] = this.setCharAt(tmp[id1], id2, "-");
+      tmp[id1] = this.setCharAt(tmp[id1], id2, char);
       this.rows = tmp.slice();
       console.log(this.rows);
       let second = id2;
@@ -279,32 +279,18 @@ export default {
           first = "D";
           break;
       }
-      this.seats.push(first + "" + second);
+      return (first + "" + second);
+    },
+    chooseGreen(id1, id2) {
+      let seatValue=this.chooseFunc('-',id1,id2);
+      this.seats.push(seatValue);
       console.log(this.seats);
     },
     chooseWhite(id1, id2) {
-      let tmp = this.rows.slice();
-      tmp[id1] = this.setCharAt(tmp[id1], id2, "0");
-      this.rows = tmp.slice();
-      console.log(this.rows);
-      let second = id2;
-      let first;
-      switch (id1) {
-        case 0:
-          first = "A";
-          break;
-        case 1:
-          first = "B";
-          break;
-        case 2:
-          first = "C";
-          break;
-        case 3:
-          first = "D";
-          break;
-      }
+      let seatValue=this.chooseFunc('0',id1,id2);
+      this.seats.push(seatValue);
       for (let [index, item] of this.seats.entries()) {
-        if (item === first + "" + second) {
+        if (item === seatValue) {
           this.seats.splice(index, 1);
         }
       }
@@ -332,12 +318,6 @@ export default {
             cityIndex = i;
           }
         }
-        console.log(this.film);
-        console.log(this.film.cities);
-        console.log(this.film.id);
-        console.log(cityIndex);
-        console.log(this.hourIndex);
-
         this.film.cities[cityIndex].hours[this.hourIndex].seats = tmp;
 
         fetch(
@@ -461,7 +441,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped src="./Buy.css">
+<style scoped src="../style.css">
 
 </style>

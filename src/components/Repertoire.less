@@ -22,7 +22,7 @@
         select {
             background: rgba(0, 0, 0, 0);
             border: 0;
-            border-bottom: 1px solid gray;
+            border-bottom: 1px solid @gray;
             width: 10rem;
             height: 2rem;
             font-size: 1.2rem;
@@ -44,7 +44,7 @@
       .film {
         height: auto;
         width: 100%;
-        border-bottom: 1px solid gray;
+        border-bottom: 1px solid @gray;
         display: flex;
         h1 {
             font-size: 1rem;
@@ -55,51 +55,10 @@
             margin-top: 2rem;
         }
       }
-      
-      .separator {
-        background: white;
-        width: 1px;
-        height: 1rem;
-        margin: 0 0.5rem;
-        color: gray;
-      }
-      .calendar {
-        background: black;
-        border: 1px solid @main-color;
-        border-radius: 10px;
-        .flex();
-        height: 2rem;
-        width: 9rem;
-        margin-left: 2rem;
-        h1 {
-            font-size: 1rem;
-          }
-      }
-      #left-arrow, #right-arrow {
-        width: 1rem;
-        height: 1rem;
-        background: @main-color;
-        border: 0;
-        clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
-        margin-right: 0.5rem;
-      }
-      #right-arrow {
-        clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
-      }
-      #left-arrow:hover,
-      #right-arrow:hover {
-        background: #ffffff;
-        cursor: pointer;
-      }
       .hour {
         width: 6rem;
         height: 4rem;
         margin-right: 1rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        border: 1px solid @main-color;
         h1 {
             font-size: 1rem;
           }
@@ -107,12 +66,7 @@
             font-size: 1.4rem;
             margin-top: 0;
         }
-        &:hover {
-            background: @main-color;
-            cursor: pointer;
-          }
       }
-     
       .left {
         width: 20%;
         .flex();
@@ -161,6 +115,9 @@
             box-shadow: 0px 0px 29px -23px rgba(255, 255, 255, 1);
           }
       }
+      .calendar{
+        margin-left: 2rem;
+      }
       #pink {
         color: @main-color;
       }
@@ -168,7 +125,7 @@
         justify-content: center;
       }
       #gray {
-        color: gray;
+        color: @gray;
       }
       #hours{
         margin-top: 1rem;
@@ -258,7 +215,7 @@
           width: 3%
         }
         .film{
-          height: 27rem;
+          height: auto;
         }
         .city-div{
             select{

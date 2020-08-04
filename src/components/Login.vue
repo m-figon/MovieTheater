@@ -70,15 +70,18 @@ export default {
         }
       }
     },
+    inputsReset(){
+      this.accountId = false;
+          this.account = "Account Name";
+          this.type = "text";
+          this.password = "Password";
+    },
     login() {
       let correct = false;
       for (let item of this.users) {
         if (item.account === this.account && item.password === this.password) {
           this.$store.commit("changeName", this.account);
-          this.accountId = false;
-          this.account = "Account Name";
-          this.type = "text";
-          this.password = "Password";
+          this.inputsReset();
           alert("login completed");
           correct = true;
         }
@@ -95,7 +98,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped src="./Account.css">
+<style scoped src="../style.css">
 
 </style>

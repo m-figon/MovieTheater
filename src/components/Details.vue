@@ -28,14 +28,6 @@
               <button v-on:click="addDay()" id="right-arrow"></button>
             </div>
           </div>
-          <div class="description">
-            <div class="left">
-              <youtube :video-id="film.trailer" ref="youtube"></youtube>
-            </div>
-            <div class="right">
-              <p>{{film.description}}</p>
-            </div>
-          </div>
           <div class="hour-line" v-if="city!='City'">
             <div v-for="cities in film.cities">
               <div class="line" v-if="cities.name===city">
@@ -52,6 +44,15 @@
               </div>
             </div>
           </div>
+          <div class="description">
+            <div class="left">
+              <youtube :video-id="film.trailer" ref="youtube"></youtube>
+            </div>
+            <div class="right">
+              <p>{{film.description}}</p>
+            </div>
+          </div>
+          
         </div>
       </div>
     </div>
@@ -121,6 +122,5 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped src="./Details.css">
+<style scoped src="../style.css">
 </style>

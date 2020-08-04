@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="logedAc" class="orders">
+    <div v-if="logedAc && user.orders.length>0" class="orders">
       <h2>{{user.account}}'s orders</h2>
       <div class="films">
         <div v-for="item in user.orders" class="film">
@@ -33,6 +33,9 @@
           </div>
         </div>
       </div>
+    </div>
+    <div class="orders" v-if="user.orders.length===0">
+      <h2>There are no orders</h2>
     </div>
     <div v-if="!logedAc" class="orders">
       <h2>You are not logged</h2>
@@ -72,7 +75,5 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped src="./Orders.css">
-
+<style scoped src="../style.css">
 </style>

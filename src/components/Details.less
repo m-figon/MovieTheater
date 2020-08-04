@@ -16,7 +16,7 @@
   top: 0;
   left: 0;
   z-index: 3;
-  padding-top: 3rem;
+  padding-top: 0;
 }
 .details-display {
   width: 50rem;
@@ -82,7 +82,7 @@
 .city-div {
   width: 50%;
   height: 4rem;
-  .flex();
+  .flex(center,flex-start,row);
   select {
     background: rgba(0, 0, 0, 0);
     border: 0;
@@ -93,42 +93,10 @@
     color: @main-color;
   }
 }
-.calendar {
-  background: black;
-  border: 1px solid @main-color;
-  border-radius: 10px;
-  .flex();
-  height: 2rem;
-  width: 12rem;
-  margin-left: 2rem;
-  h1 {
-      font-size: 1rem;
-    }
-}
-#left-arrow, #right-arrow {
-  width: 1rem;
-  height: 1rem;
-  background: @main-color;
-  border: 0;
-  clip-path: polygon(100% 0%, 75% 50%, 100% 100%, 25% 100%, 0% 50%, 25% 0%);
-  margin-right: 0.5rem;
-}
-#right-arrow {
-  clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
-}
-#left-arrow:hover,
-#right-arrow:hover {
-  background: #ffffff;
-  cursor: pointer;
-}
 .hour {
   background: rgba(0, 0, 0, 0.5);
   width: 8rem;
   height: 4rem;
-  margin-right: 1rem;
-  .flex();
-  flex-direction: column;
-  border: 1px solid @main-color;
   h1 {
     font-size: 1rem;
     margin: 0;
@@ -138,12 +106,18 @@
     color: white;
     margin: 0;
   }
-  &:hover {
-    background: @main-color;
-    cursor: pointer;
-  }
 }
+@media only screen and (max-width: 1500px) {
+  .hour-line,
+  .big-line{
+    margin-top: 1rem;
+  }
+  height:auto;
+  .details-black{
+    height: auto;
+  }
 
+}
 @media only screen and (max-width: 1100px) {
     h2{
         font-size: 3rem;
@@ -151,6 +125,7 @@
   .description{
     width:80%;
   }
+  
   .hour{
     width:6rem;
     h2{
@@ -186,6 +161,7 @@
     height:2rem;
     select{
         font-size: 1rem;
+        width:8rem;
       }
   }
   .big-line{
@@ -259,7 +235,7 @@
   }
   .hour{
     width:5rem;
-    margin-right: 0.5rem;
+    margin-right: 1rem;
     h2{
         font-size: 1.2rem;
       }
@@ -280,6 +256,9 @@
         display: grid;
         grid-template-columns: auto auto auto;
       }
+  }
+  .big-line{
+    height:3rem;
   }
 }
 }

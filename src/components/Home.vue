@@ -7,7 +7,7 @@
       v-bind:height="height"
       v-bind:width="width"
     />
-    <button v-on:click="clicking()">BUY TICKET</button>
+    <button v-on:click="goToBuy()">BUY TICKET</button>
   </div>
 </template>
 
@@ -50,23 +50,18 @@ export default {
       });
   },
   methods: {
-    clicking() {
+    goToBuy() {
       switch (this.$refs.slider.currentIndex) {
         case 0:
-          console.log("bohemian-rhapsody");
           this.$router.push("bohemian-rhapsody/buy");
-
           break;
         case 1:
-          console.log("onward");
           this.$router.push("onward/buy");
           break;
         case 2:
-          console.log("sonic-the-hedgehog");
           this.$router.push("sonic-the-hedgehog/buy");
           break;
         case 3:
-          console.log("knvies out");
           this.$router.push("knives-out/buy");
           break;
       }
@@ -75,7 +70,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped src="./Home.css">
+<style scoped src="../style.css">
 
 </style>
