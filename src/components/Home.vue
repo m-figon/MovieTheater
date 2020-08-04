@@ -8,6 +8,9 @@
       v-bind:width="width"
     />
     <button v-on:click="goToBuy()">BUY TICKET</button>
+    <div v-if="!loaded" class="loading">
+      <img src="../assets/loading.gif" />
+    </div>
   </div>
 </template>
 
@@ -21,6 +24,7 @@ export default {
       height: 0,
       films: [],
       posters: [],
+      loaded: false
     };
   },
   components: {
@@ -47,11 +51,12 @@ export default {
         for (let item of this.films) {
           this.posters.push(item.homeImg);
         }
+        this.loaded=true;
       });
   },
   methods: {
     goToBuy() {
-      switch (this.$refs.slider.currentIndex) {
+      switch (this.$refs.slider.currentIndex%4) {
         case 0:
           this.$router.push("bohemian-rhapsody/buy");
           break;

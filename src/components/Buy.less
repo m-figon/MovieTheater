@@ -8,6 +8,7 @@
   }
 .buy-black {
   .big-div();
+  padding-top: 1rem;
 }
 .buy-content {
   height: 70%;
@@ -114,14 +115,14 @@
   font-size: 1rem;
 }
 .big-line {
-  height: 6rem;
+  height: auto;
   display: flex;
   flex-direction: row;
   width: 80%;
   margin-top: 3rem;
 }
 .hour-line {
-  height: 6rem;
+  height: auto;
   display: flex;
   flex-direction: row;
   margin-top: 3rem;
@@ -194,9 +195,12 @@
 }
 @media only screen and (max-width: 1500px) {
   .buy{
+    h2{
+      font-size: 3rem;
+    }
     .hour-line,
     .big-line{
-      margin-top: 1rem;
+      margin: 1rem 0;
     }
     height:auto;
     .buy-black{
@@ -237,7 +241,7 @@
     }
     .hour-line{
       margin-top: 0rem;
-      margin-bottom:4rem;
+      margin-bottom:1rem;
       .line{
           display: grid;
           grid-template-columns: auto auto auto auto;
@@ -283,7 +287,7 @@
     }
     .hour{
       width:5rem;
-      height:3rem;
+      height:auto;
       margin: 0.5rem;
        h2{
           font-size: 1.0rem;
@@ -295,7 +299,7 @@
     
     .hour-line{
       margin-top: 0rem;
-      margin-bottom:4rem;
+      margin-bottom:2rem;
       .line{
           display: grid;
           grid-template-columns: auto auto auto;
@@ -366,7 +370,7 @@
     }
     .hour-line{
       margin-top: 0rem;
-      margin-bottom:4rem;
+      margin-bottom:2rem;
       .line{
           display: grid;
           grid-template-columns: auto auto auto auto;

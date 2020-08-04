@@ -95,6 +95,9 @@
         </div>
       </div>
     </div>
+    <div v-if="!loaded" class="loading">
+      <img src="../assets/loading.gif" />
+    </div>
   </div>
 </template>
 
@@ -123,6 +126,7 @@ export default {
       students: 0,
       children: 0,
       price: 0,
+      loaded: false
     };
   },
   created() {
@@ -189,6 +193,7 @@ export default {
             }
           }
         }
+        this.loaded=true;
       });
     fetch("https://rocky-citadel-32862.herokuapp.com/MovieTheater/users")
       .then((response) => response.json())

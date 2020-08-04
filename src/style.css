@@ -50,6 +50,23 @@
   background: #c8006d;
   cursor: pointer;
 }
+.loading {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  z-index: 6;
+  background: #000000;
+}
+.loading img {
+  height: 3rem;
+  width: 3rem;
+}
 .buy {
   width: 100%;
   height: calc(100vh - 5rem);
@@ -72,6 +89,7 @@
   align-items: center;
   flex-direction: column;
   background-size: 100% 100%;
+  padding-top: 1rem;
 }
 .buy .buy-content {
   height: 70%;
@@ -187,14 +205,14 @@
   font-size: 1rem;
 }
 .buy .big-line {
-  height: 6rem;
+  height: auto;
   display: flex;
   flex-direction: row;
   width: 80%;
   margin-top: 3rem;
 }
 .buy .hour-line {
-  height: 6rem;
+  height: auto;
   display: flex;
   flex-direction: row;
   margin-top: 3rem;
@@ -269,9 +287,12 @@
   .buy {
     height: auto;
   }
+  .buy h2 {
+    font-size: 3rem;
+  }
   .buy .hour-line,
   .buy .big-line {
-    margin-top: 1rem;
+    margin: 1rem 0;
   }
   .buy .buy-black {
     height: auto;
@@ -305,7 +326,7 @@
   }
   .buy .hour-line {
     margin-top: 0rem;
-    margin-bottom: 4rem;
+    margin-bottom: 1rem;
   }
   .buy .hour-line .line {
     display: grid;
@@ -336,7 +357,7 @@
   }
   .buy .hour {
     width: 5rem;
-    height: 3rem;
+    height: auto;
     margin: 0.5rem;
   }
   .buy .hour h2 {
@@ -347,7 +368,7 @@
   }
   .buy .hour-line {
     margin-top: 0rem;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
   }
   .buy .hour-line .line {
     display: grid;
@@ -405,7 +426,7 @@
   }
   .buy .hour-line {
     margin-top: 0rem;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
   }
   .buy .hour-line .line {
     display: grid;
@@ -620,6 +641,7 @@
   align-items: center;
   flex-direction: column;
   background-size: 100% 100%;
+  padding-top: 1rem;
 }
 .details .details-black {
   background: rgba(0, 0, 0, 0.699);
@@ -627,7 +649,7 @@
   top: 0;
   left: 0;
   z-index: 3;
-  padding-top: 0;
+  padding-top: 1rem;
 }
 .details .details-display {
   width: 50rem;
@@ -684,7 +706,7 @@
   margin-top: 3rem;
 }
 .details .hour-line {
-  height: 6rem;
+  height: auto;
   display: flex;
   flex-direction: row;
   margin-top: 3rem;
@@ -734,8 +756,14 @@
   .details .big-line {
     margin-top: 1rem;
   }
+  .details h2 {
+    font-size: 3rem;
+  }
   .details .details-black {
     height: auto;
+  }
+  .details .big-line {
+    height: 3rem;
   }
 }
 @media only screen and (max-width: 1100px) {
@@ -800,6 +828,10 @@
   }
 }
 @media only screen and (max-width: 600px) {
+  .details .hour-line {
+    height: auto;
+    margin-bottom: 1rem;
+  }
   .details h2 {
     font-size: 1.5rem;
   }
@@ -970,6 +1002,7 @@
   }
 }
 .orders {
+  padding-top: 1rem;
   width: 100%;
   display: flex;
   justify-content: center;

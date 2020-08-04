@@ -20,6 +20,9 @@
         <button v-on:click="login()">Login</button>
       </div>
     </div>
+    <div v-if="!loaded" class="loading">
+      <img src="../assets/loading.gif" />
+    </div>
   </div>
 </template>
 
@@ -35,6 +38,7 @@ export default {
       type: "text",
       users: [],
       accountId: false,
+      loaded: false
     };
   },
   created() {
@@ -43,6 +47,7 @@ export default {
       .then((data) => {
         this.users = data.slice();
         console.log(this.users);
+        this.loaded=true;
       });
   },
   methods: {
@@ -70,11 +75,11 @@ export default {
         }
       }
     },
-    inputsReset(){
+    inputsReset() {
       this.accountId = false;
-          this.account = "Account Name";
-          this.type = "text";
-          this.password = "Password";
+      this.account = "Account Name";
+      this.type = "text";
+      this.password = "Password";
     },
     login() {
       let correct = false;
@@ -99,5 +104,4 @@ export default {
 </script>
 
 <style scoped src="../style.css">
-
 </style>

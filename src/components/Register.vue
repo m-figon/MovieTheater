@@ -42,6 +42,9 @@
         <button v-on:click="register()">Register</button>
       </div>
     </div>
+    <div v-if="!loaded" class="loading">
+      <img src="../assets/loading.gif" />
+    </div>
   </div>
 </template>
 
@@ -63,7 +66,11 @@ export default {
       emailShow: false,
       passwordShow: false,
       password2Show: false,
+      loaded: false
     };
+  },
+  mounted(){
+    this.loaded=true;
   },
   methods: {
     focusFunc(text, event, condition) {

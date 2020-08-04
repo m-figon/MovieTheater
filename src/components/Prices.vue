@@ -21,14 +21,22 @@
         </div>
       </div>
     </div>
+    <div v-if="!loaded" class="loading">
+      <img src="../assets/loading.gif" />
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   data() {
-    return {};
+    return {
+      loaded: false
+    };
   },
+  mounted(){
+    this.loaded=true;
+  }
 };
 </script>
 

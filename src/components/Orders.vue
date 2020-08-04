@@ -40,6 +40,9 @@
     <div v-if="!logedAc" class="orders">
       <h2>You are not logged</h2>
     </div>
+    <div v-if="!loaded" class="loading">
+      <img src="../assets/loading.gif" />
+    </div>
   </div>
 </template>
 
@@ -52,6 +55,7 @@ export default {
     return {
       user: null,
       logedAc: "",
+      loaded: false
     };
   },
   methods: {},
@@ -67,6 +71,7 @@ export default {
             this.user = item;
           }
         }
+        this.loaded=true;
       });
     setInterval(() => {
       this.logedAc = this.$store.state.user.logedUser;

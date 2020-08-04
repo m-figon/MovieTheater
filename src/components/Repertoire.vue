@@ -65,6 +65,9 @@
         </div>
       </div>
     </div>
+    <div v-if="!loaded" class="loading">
+      <img src="../assets/loading.gif" />
+    </div>
   </div>
 </template>
 
@@ -78,6 +81,7 @@ export default {
       city: "City",
       cities: [],
       date: null,
+      loaded: false
     };
   },
   methods: {
@@ -114,6 +118,7 @@ export default {
           }
         }
         console.log(this.cities);
+        this.loaded=true;
       });
   },
 };

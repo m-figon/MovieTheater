@@ -9,6 +9,7 @@
   }
 .details-black {
   .big-div();
+  padding-top: 1rem;
 }
 .details-black {
   background: rgba(0, 0, 0, 0.699);
@@ -16,7 +17,7 @@
   top: 0;
   left: 0;
   z-index: 3;
-  padding-top: 0;
+  padding-top: 1rem;
 }
 .details-display {
   width: 50rem;
@@ -68,7 +69,7 @@
   margin-top: 3rem;
 }
 .hour-line {
-  height: 6rem;
+  height: auto;
   display: flex;
   flex-direction: row;
   margin-top: 3rem;
@@ -113,10 +114,15 @@
     margin-top: 1rem;
   }
   height:auto;
+  h2{
+    font-size: 3rem;
+  }
   .details-black{
     height: auto;
   }
-
+  .big-line{
+    height:3rem;
+  }
 }
 @media only screen and (max-width: 1100px) {
     h2{
@@ -191,6 +197,10 @@
   }
 }
 @media only screen and (max-width: 600px) {
+  .hour-line{
+    height:auto;
+    margin-bottom: 1rem;
+  }
     h2{
         font-size: 1.5rem;
       }
