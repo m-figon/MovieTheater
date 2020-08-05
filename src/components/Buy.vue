@@ -15,11 +15,7 @@
                 <option v-for="city in cities" v-bind:value="city">{{city}}</option>
               </select>
             </div>
-            <div class="calendar">
-              <button v-on:click="subtractDay()" id="left-arrow"></button>
-              <h1>{{date}}</h1>
-              <button v-on:click="addDay()" id="right-arrow"></button>
-            </div>
+                  <calendar v-bind:date="date" v-on:changeDate="updateDate($event)"/>
           </div>
           <div class="hour-line" v-if="city!='City'">
             <div v-for="cities in film.cities">
@@ -104,7 +100,12 @@
 <script>
 import store from "../store/index";
 import moment from "moment";
+import Calendar from './Calendar';
+
 export default {
+  components: {
+    calendar: Calendar
+  },
   store,
   data() {
     return {
@@ -411,13 +412,8 @@ export default {
       this.$store.commit("changeRegister", true);
       this.$store.commit("changeLogin", false);
     },
-    addDay() {
-      this.date = moment(this.date, "ll").add(1, "d");
-      this.date = moment(this.date).format("ll");
-    },
-    subtractDay() {
-      this.date = moment(this.date, "ll").subtract(1, "d");
-      this.date = moment(this.date).format("ll");
+    updateDate(newDate){
+      this.date=newDate;
     },
     calculatPrice() {
       this.price = 0;

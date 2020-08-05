@@ -1,15 +1,11 @@
 <template>
   <div class="repertoire">
     <div class="city-div">
-      <select v-model="city">
-        <option value="City">Choose city</option>
-        <option v-for="city in cities" v-bind:value="city">{{city}}</option>
-      </select>
-      <div class="calendar">
-        <button v-on:click="subtractDay()" id="left-arrow"></button>
-        <h1>{{date}}</h1>
-        <button v-on:click="addDay()" id="right-arrow"></button>
-      </div>
+    <select v-model="city">
+      <option value="City">Choose city</option>
+      <option v-for="city in cities" v-bind:value="city">{{city}}</option>
+    </select>  
+    <calendar v-bind:date="date" v-on:changeDate="updateDate($event)"/>
     </div>
 
     <div class="films">
@@ -73,8 +69,12 @@
 
 <script>
 import moment from "moment";
+import Calendar from './Calendar';
 
 export default {
+  components: {
+    calendar: Calendar
+      },
   data() {
     return {
       films: [],
@@ -88,14 +88,9 @@ export default {
     myTrim(x) {
       return x.replace(/\s/g, "-");
     },
-    addDay() {
-      this.date = moment(this.date, "ll").add(1, "d");
-      this.date = moment(this.date).format("ll");
-    },
-    subtractDay() {
-      this.date = moment(this.date, "ll").subtract(1, "d");
-      this.date = moment(this.date).format("ll");
-    },
+    updateDate(newDate){
+      this.date=newDate;
+    }
   },
   created() {
     this.date = moment().format("ll");
