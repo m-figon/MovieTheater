@@ -25,7 +25,7 @@
               </router-link>
             </div>
             <div class="line" id="gray">
-              <h1>{{item.type}}</h1>
+              <h1>{{item.genre}}</h1>
               <div class="separator"></div>
               <h1>Above {{item.age}}</h1>
               <div class="separator"></div>

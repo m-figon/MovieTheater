@@ -10,7 +10,7 @@
           <h2>{{film.title.toUpperCase()}}</h2>
           <div class="big-line">
             <div class="line">
-              <h1 id="white">{{film.type}}</h1>
+              <h1 id="white">{{film.genre}}</h1>
               <div class="separator"></div>
               <h1 id="white">Above {{film.age}}</h1>
               <div class="separator"></div>

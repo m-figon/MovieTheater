@@ -13,7 +13,7 @@
                 <h2>{{item.title}}</h2>
               </div>
               <div class="line" id="gray">
-                <h1>{{item.type}}</h1>
+                <h1>{{item.genre}}</h1>
                 <div class="separator"></div>
                 <h1>Above {{item.age}}</h1>
                 <div class="separator"></div>
@@ -55,7 +55,7 @@ export default {
     return {
       user: null,
       logedAc: "",
-      loaded: false
+      loaded: false,
     };
   },
   methods: {},
@@ -69,9 +69,10 @@ export default {
         for (let item of users) {
           if (item.account === this.logedAc) {
             this.user = item;
+            console.log(this.user);
           }
         }
-        this.loaded=true;
+        this.loaded = true;
       });
     setInterval(() => {
       this.logedAc = this.$store.state.user.logedUser;

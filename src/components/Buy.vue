@@ -333,6 +333,8 @@ export default {
             body: JSON.stringify({
               title: this.film.title,
               duration: this.film.duration,
+              homeImg: this.film.homeImg,
+              genre: this.film.genre,
               img: this.film.img,
               trailer: this.film.trailer,
               description: this.film.description,
@@ -358,7 +360,7 @@ export default {
           ordersValue = {
             title: this.film.title,
             duration: this.film.duration,
-            type: this.film.type,
+            genre: this.film.genre,
             img: this.film.img,
             trailer: this.film.trailer,
             description: this.film.description,
@@ -398,7 +400,7 @@ export default {
           this.$router.push("/" + url);
         });
       } else {
-        alert("not enough person");
+        alert("not correct person number");
       }
     },
     login() {

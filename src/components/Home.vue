@@ -51,6 +51,7 @@ export default {
         for (let item of this.films) {
           this.posters.push(item.homeImg);
         }
+        console.log(this.posters);
         this.loaded=true;
       });
   },
