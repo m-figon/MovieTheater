@@ -1,21 +1,26 @@
-# movie-theater
+# Movie Theater
 
-> A Vue.js project
+Goal of this project was creating a movie theater website which allows user to search for movie, view details information about it, order seats for specific hour, view user's orders.
 
-## Build Setup
+To sign in use account 'testUser' and password: 'TestUser.123' (login allows to order ticket for a movie, view orders)
 
-``` bash
-# install dependencies
-npm install
+## Used frameworks, languages
 
-# serve with hot reload at localhost:8080
-npm run dev
+* Vue
 
-# build for production with minification
-npm run build
+* JavaScript
 
-# build for production and view the bundle analyzer report
-npm run build --report
-```
+* HTML & CSS
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+* Less
+
+* VueYoutube
+
+## Netlify app link
+
+https://movie-theater-mfigon.netlify.app
+
+## Netlify portfolio link
+
+https://portfolio-mfigon.netlify.app
+
