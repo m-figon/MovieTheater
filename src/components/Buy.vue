@@ -15,7 +15,7 @@
                 <option v-for="city in cities" v-bind:value="city">{{city}}</option>
               </select>
             </div>
-                  <calendar v-bind:date="date" v-on:changeDate="updateDate($event)"/>
+            <calendar v-bind:date="date" v-on:changeDate="updateDate($event)" />
           </div>
           <div class="hour-line" v-if="city!='City'">
             <div v-for="cities in film.cities">
@@ -37,22 +37,7 @@
           </div>
           <div class="seats" v-if="rows && city!=='City'">
             <div class="left">
-              <div class="row" v-for="(row,index) in rows">
-                <div v-for="(seat,key) in row">
-                  <div v-if="seat==='0'">
-                    <button v-on:click="chooseGreen(index,key)" id="green"></button>
-                  </div>
-                  <div v-if="seat==='-'">
-                    <button v-on:click="chooseWhite(index,key)" id="white-bg"></button>
-                  </div>
-                  <div v-if="seat==='1'">
-                    <button v-on:click="chooseRed()" id="red"></button>
-                  </div>
-                  <div v-if="seat!=='0' && seat!=='1' && seat!=='-'">
-                    <p>{{seat}}</p>
-                  </div>
-                </div>
-              </div>
+              <seats v-bind:rows="rows" v-on:chooseGreen="chooseGreen($event)" v-on:chooseWhite="chooseWhite($event)"/>
             </div>
             <div class="right">
               <div class="line">
@@ -100,11 +85,13 @@
 <script>
 import store from "../store/index";
 import moment from "moment";
-import Calendar from './Calendar';
+import Calendar from "./Calendar";
+import Seats from "./Seats";
 
 export default {
   components: {
-    calendar: Calendar
+    calendar: Calendar,
+    seats: Seats,
   },
   store,
   data() {
@@ -127,7 +114,7 @@ export default {
       students: 0,
       children: 0,
       price: 0,
-      loaded: false
+      loaded: false,
     };
   },
   created() {
@@ -194,7 +181,7 @@ export default {
             }
           }
         }
-        this.loaded=true;
+        this.loaded = true;
       });
     fetch("https://rocky-citadel-32862.herokuapp.com/MovieTheater/users")
       .then((response) => response.json())
@@ -264,7 +251,7 @@ export default {
       if (index > str.length - 1) return str;
       return str.substr(0, index) + chr + str.substr(index + 1);
     },
-    chooseFunc(char,id1,id2){
+    chooseFunc(char, id1, id2) {
       let tmp = this.rows.slice();
       tmp[id1] = this.setCharAt(tmp[id1], id2, char);
       this.rows = tmp.slice();
@@ -285,15 +272,16 @@ export default {
           first = "D";
           break;
       }
-      return (first + "" + second);
+      return first + "" + second;
     },
-    chooseGreen(id1, id2) {
-      let seatValue=this.chooseFunc('-',id1,id2);
+    chooseGreen(obj) {
+      console.log(obj.id1,obj.id2);
+      let seatValue = this.chooseFunc("-", obj.id1, obj.id2);
       this.seats.push(seatValue);
       console.log(this.seats);
     },
-    chooseWhite(id1, id2) {
-      let seatValue=this.chooseFunc('0',id1,id2);
+    chooseWhite(obj) {
+      let seatValue = this.chooseFunc("0", obj.id1, obj.id2);
       this.seats.push(seatValue);
       for (let [index, item] of this.seats.entries()) {
         if (item === seatValue) {
@@ -301,9 +289,6 @@ export default {
         }
       }
       console.log(this.seats);
-    },
-    chooseRed() {
-      alert("this place is unavailable");
     },
     order() {
       if (
@@ -412,8 +397,8 @@ export default {
       this.$store.commit("changeRegister", true);
       this.$store.commit("changeLogin", false);
     },
-    updateDate(newDate){
-      this.date=newDate;
+    updateDate(newDate) {
+      this.date = newDate;
     },
     calculatPrice() {
       this.price = 0;
@@ -445,5 +430,4 @@ export default {
 </script>
 
 <style scoped src="../style.css">
-
 </style>
