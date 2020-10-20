@@ -56,7 +56,7 @@
   }
   .login-form-content button,
   .register-form-content button {
-    background: @main-color;
+    background-color: @main-color;
     border-radius: 10px;
     border: 1px solid @gray;
     width: 4rem;
@@ -64,8 +64,9 @@
     font-size: 1.2rem;
     color: white;
     margin: 1rem 0;
+    transition: background-color 500ms;
     &:hover {
-        background: lighten(@main-color,10%);
+        background-color: lighten(@main-color,20%);
         cursor: pointer;
       }
   }

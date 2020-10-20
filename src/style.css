@@ -572,7 +572,7 @@
 }
 .login-form-content button,
 .register-form-content button {
-  background: #c8006d;
+  background-color: #c8006d;
   border-radius: 10px;
   border: 1px solid #a3a3a3;
   width: 4rem;
@@ -580,10 +580,11 @@
   font-size: 1.2rem;
   color: white;
   margin: 1rem 0;
+  transition: background-color 500ms;
 }
 .login-form-content button:hover,
 .register-form-content button:hover {
-  background: #fb0089;
+  background-color: #ff2fa0;
   cursor: pointer;
 }
 .register-form-content button {
@@ -631,7 +632,20 @@
     font-size: 0.7rem;
   }
 }
+@keyframes showImg {
+  0% {
+    filter: opacity(30%);
+  }
+  100% {
+    filter: opacity(100%);
+  }
+}
 .details {
+  animation: showImg ease 4s;
+  -webkit-animation: showImg ease 4s;
+  -moz-animation: showImg ease 4s;
+  -o-animation: showImg ease 4s;
+  -ms-animation: showImg ease 4s;
   width: 100%;
   height: calc(100vh - 5rem);
   display: flex;
@@ -991,6 +1005,7 @@
   font-size: 1.2rem;
   margin: 0 1rem;
   color: #a3a3a3;
+  transition: color 500ms;
 }
 .nav-bar-display .right h1:hover {
   color: #c8006d;

@@ -1,6 +1,10 @@
 @import '../global.less';
-
+@keyframes showImg {
+  0% {filter: opacity(30%);}
+  100% {filter: opacity(100%);}
+  }
 .details{
+  .animateImg();
   .big-div();
   h2 {
     color: @main-color;
