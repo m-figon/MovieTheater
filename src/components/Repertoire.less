@@ -1,5 +1,8 @@
 @import '../global.less';
-
+@keyframes showImg {
+  0% {filter: opacity(30%);}
+  100% {filter: opacity(100%);}
+  }
 .repertoire {
     width: 100%;
     .flex();
@@ -113,6 +116,7 @@
             -webkit-box-shadow: 0px 0px 29px -23px rgba(255, 255, 255, 1);
             -moz-box-shadow: 0px 0px 29px -23px rgba(255, 255, 255, 1);
             box-shadow: 0px 0px 29px -23px rgba(255, 255, 255, 1);
+            .animateImg();
           }
       }
       .calendar{

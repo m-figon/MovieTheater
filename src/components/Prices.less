@@ -1,5 +1,8 @@
 @import '../global.less';
-
+@keyframes showImg {
+  0% {filter: opacity(30%);}
+  100% {filter: opacity(100%);}
+  }
 .prices {
     width: 100%;
     height: calc(100vh - 5rem);
@@ -15,6 +18,7 @@
     border-radius: 20px;
     overflow: hidden;
      background: url('./assets/bg.jpg');
+     .animateImg();
     background-size: 100% 100%;
     h2{
         margin:0;
